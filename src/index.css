@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #f8fafc;
+  /* light background */
+  --foreground: #1e293b;
+  /* text color */
+  --primary: #2563eb;
+  /* accent */
+}
+
+.dark {
+  --background: #0f172a;
+  /* dark background */
+  --foreground: #f1f5f9;
+  /* light text */
+  --primary: #3b82f6;
+  /* accent in dark */
+}
+
+
+@keyframes reveal {
+  0% {
+    clip-path: circle(0% at var(--x, 50%) var(--y, 50%));
+  }
+
+  100% {
+    clip-path: circle(150% at var(--x, 50%) var(--y, 50%));
+  }
+}
