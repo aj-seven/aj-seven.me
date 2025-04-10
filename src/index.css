@@ -47,3 +47,7 @@
   animation: fadeInUp 1s ease-out forwards;
   animation-delay: 0.4s;
 }
+
+html {
+  scroll-behavior: smooth;
+}
