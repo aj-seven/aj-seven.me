@@ -1,57 +1,42 @@
 import React from "react";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail } from "lucide-react";
 import { TypeAnimation } from "react-type-animation";
+import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
-    <section className="relative w-full min-h-screen flex flex-col justify-center items-center text-center px-6 overflow-hidden bg-background">
-      {/* Dot Pattern Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
-        <svg
-          className="w-full h-full animate-moveDots"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <defs>
-            <pattern
-              id="dotPattern"
-              x="0"
-              y="0"
-              width="20"
-              height="20"
-              patternUnits="userSpaceOnUse"
-            >
-              <circle cx="1" cy="1" r="1" fill="currentColor" />
-            </pattern>
-          </defs>
-          <rect
-            width="100%"
-            height="100%"
-            fill="url(#dotPattern)"
-            className="text-gray-400 dark:text-gray-600"
-          />
-        </svg>
-      </div>
-
-      {/* Animated Gradient Blobs */}
-      <div className="absolute w-[500px] h-[500px] bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob z-0 top-[-100px] left-[-100px]" />
-      <div className="absolute w-[400px] h-[400px] bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000 z-0 bottom-[-100px] right-[-100px]" />
-
+    <motion.section
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="relative w-full min-h-dvh flex flex-col py-48 items-center text-center overflow-hidden"
+    >
       {/* Hero Content */}
       <div className="z-10 max-w-2xl">
-        <img
-          src="/avatar.png"
+        <motion.img
+          initial={{ opacity: 0, filter: "blur(10px)" }}
+          animate={{ opacity: 1, filter: "blur(0px)" }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          src="avatar.png"
           alt="My Avatar"
-          className="mx-auto mb-6 w-32 h-32 rounded-full border-4 border-primary shadow-lg object-cover"
+          className="mx-auto mb-6 w-40 h-40 rounded-full border-4 border-primary shadow-lg object-cover"
         />
 
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-foreground">
+        <motion.h1
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="text-4xl md:text-5xl font-bold mb-4 text-foreground"
+        >
           Hey, I'm{" "}
-          <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
-            Aj-Seven
-          </span>
-        </h1>
-
-        <h2 className="text-lg md:text-xl text-muted-foreground font-medium mb-6">
+          <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent"></span>
+        </motion.h1>
+        <motion.h2
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.6 }}
+          className="text-lg md:text-xl text-muted-foreground font-medium mb-6"
+        >
           <TypeAnimation
             sequence={[
               "Aspiring Full Stack Developer",
@@ -65,10 +50,14 @@ const Hero = () => {
             speed={50}
             repeat={Infinity}
           />
-        </h2>
-
+        </motion.h2>
         {/* Social Icons */}
-        <div className="flex justify-center gap-6 mt-6">
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.6 }}
+          className="flex justify-center gap-6 mt-6"
+        >
           <a
             href="https://github.com/aj-seven"
             target="_blank"
@@ -91,17 +80,9 @@ const Hero = () => {
           >
             <Mail size={24} />
           </a>
-        </div>
-
-        {/* Scroll Down Arrow */}
-        <a
-          href="#about"
-          className="inline-flex items-center gap-2 mt-10 text-primary animate-bounce transition"
-        >
-          Scroll Down <ArrowDown size={18} />
-        </a>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
