@@ -123,7 +123,7 @@ const TerminalMode = () => {
   return (
     <div
       className={clsx(
-        "relative min-h-[calc(100vh-10px)] flex flex-col px-4 py-4 md:px-12 font-mono overflow-hidden",
+        "relative min-h-dvh flex flex-col px-4 py-4 md:px-12 font-mono overflow-hidden",
         glow
           ? "bg-gradient-to-br from-[#0f0f0f] to-black via-[#001f1f] text-green-400"
           : "bg-black text-green-400"
