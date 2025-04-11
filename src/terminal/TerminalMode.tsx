@@ -66,6 +66,7 @@ const TerminalMode = () => {
         break;
       case "clear":
         setHistory([]);
+        setInput("");
         return;
       case "glow on":
         setGlow(true);
