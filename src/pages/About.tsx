@@ -51,7 +51,7 @@ const About = () => {
           <motion.div
             key={i}
             whileHover={{ scale: 1.05 }}
-            className="px-5 py-3 rounded-lg bg-white/10 dark:bg-white/5 shadow-xs text-sm md:text-base font-medium border border-gray-400 dark:border-gray-600 text-foreground"
+            className="px-5 py-3 rounded-lg bg-white/30 dark:bg-white/5 shadow-xs text-sm md:text-base font-medium border border-gray-400 dark:border-gray-600 text-foreground"
           >
             {fact}
           </motion.div>

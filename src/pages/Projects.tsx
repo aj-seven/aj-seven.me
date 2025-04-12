@@ -54,7 +54,7 @@ const Projects = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.2, duration: 0.6 }}
-            className="rounded-xl p-6 bg-white/10 dark:bg-white/5 shadow-xs border border-gray-400 dark:border-gray-600 text-left transition hover:scale-[1.02]"
+            className="rounded-xl p-6 bg-white/30 dark:bg-white/5 shadow-xs border border-gray-400 dark:border-gray-600 text-left transition hover:scale-[1.02]"
           >
             <h3 className="text-xl font-semibold mb-2">{project.name}</h3>
             <p className="text-sm text-muted-foreground mb-4">
@@ -64,7 +64,7 @@ const Projects = () => {
               {project.tech.map((t) => (
                 <span
                   key={t}
-                  className="bg-muted px-2 py-1 rounded-full text-foreground/80"
+                  className="bg-muted border border-gray-400 dark:border-gray-600 px-2 py-1 rounded-full text-foreground/80"
                 >
                   {t}
                 </span>
@@ -72,16 +72,6 @@ const Projects = () => {
             </div>
 
             <div className="flex gap-4">
-              {project.live && (
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1 text-sm text-primary hover:underline"
-                >
-                  <ExternalLink size={16} /> Live Demo
-                </a>
-              )}
               {project.github && (
                 <a
                   href={project.github}
@@ -90,6 +80,16 @@ const Projects = () => {
                   className="flex items-center gap-1 text-sm text-muted-foreground hover:underline"
                 >
                   <Github size={16} /> GitHub
+                </a>
+              )}
+              {project.live && (
+                <a
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 text-sm text-primary hover:underline"
+                >
+                  <ExternalLink size={16} /> Live Demo
                 </a>
               )}
             </div>

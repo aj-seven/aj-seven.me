@@ -41,7 +41,7 @@ const Skills = () => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 * index, duration: 0.4 }}
-            className="p-4 rounded-xl shadow-xs bg-white/10 dark:bg-white/5 border border-gray-400 dark:border-gray-600"
+            className="p-4 rounded-xl shadow-xs bg-white/30 dark:bg-white/5 border border-gray-400 dark:border-gray-600"
           >
             <div className="flex justify-between items-center mb-2">
               <h4 className="text-lg font-semibold">{skill.name}</h4>
