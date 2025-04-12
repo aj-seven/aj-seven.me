@@ -1,0 +1,67 @@
+"use client";
+
+import React from "react";
+import { motion } from "framer-motion";
+
+const skills = [
+  { name: "React", level: 60 },
+  { name: "Node.js", level: 65 },
+  { name: "MongoDB", level: 45 },
+  { name: "Tailwind CSS", level: 75 },
+  { name: "TypeScript", level: 65 },
+  { name: "Git & GitHub", level: 80 },
+];
+
+const Skills = () => {
+  return (
+    <section className="w-full px-6 mb-40 text-center text-foreground">
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="text-4xl md:text-5xl font-bold mb-6"
+      >
+        My Skills
+      </motion.h2>
+
+      <motion.p
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1, duration: 0.6 }}
+        className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-4"
+      >
+        A snapshot of my core competencies and how confident I feel working with
+        each.
+      </motion.p>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+        {skills.map((skill, index) => (
+          <motion.div
+            key={skill.name}
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 * index, duration: 0.4 }}
+            className="p-4 rounded-xl shadow-xs bg-white/10 dark:bg-white/5 border border-gray-400 dark:border-gray-600"
+          >
+            <div className="flex justify-between items-center mb-2">
+              <h4 className="text-lg font-semibold">{skill.name}</h4>
+              <span className="text-sm text-muted-foreground">
+                {skill.level}%
+              </span>
+            </div>
+            <div className="w-full bg-muted rounded-full h-3 overflow-hidden">
+              <motion.div
+                initial={{ width: 0 }}
+                whileInView={{ width: `${skill.level}%` }}
+                transition={{ duration: 0.8 }}
+                className="h-full bg-primary rounded-full"
+              />
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+};
+
+export default Skills;
