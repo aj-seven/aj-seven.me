@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Sun, Moon, Terminal } from "lucide-react";
+import { Sun, Moon, Terminal } from "lucide-react";
 import React from "react";
 
 type Props = {
@@ -10,21 +9,12 @@ type Props = {
 
 const Navbar = ({ terminalMode, setTerminalMode }: Props) => {
   const [darkMode, setDarkMode] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [toggleFrom, setToggleFrom] = useState({ x: 0, y: 0 });
-
-  const location = useLocation();
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", darkMode);
   }, [darkMode]);
-
-  const navLinks = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Projects", path: "/projects" },
-  ];
 
   const handleThemeToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -48,28 +38,11 @@ const Navbar = ({ terminalMode, setTerminalMode }: Props) => {
   };
 
   return (
-    <nav className="w-full bg-background text-foreground shadow-sm border-b border-gray-300 dark:border-gray-700 fixed top-0 left-0 z-50 transition duration-300">
+    <nav className="w-full bg-background/70 backdrop-blur-md text-foreground shadow-sm border-b border-gray-300 dark:border-gray-700 fixed top-0 left-0 z-50 transition duration-300">
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         <div className="text-xl font-bold text-primary transition-transform duration-300 hover:scale-105">
           aj-seven
         </div>
-
-        {!terminalMode && (
-          <ul className="hidden md:flex space-x-6 font-medium">
-            {navLinks.map((link) => (
-              <li key={link.path}>
-                <Link
-                  to={link.path}
-                  className={`hover:text-primary transition ${
-                    location.pathname === link.path ? "text-primary" : ""
-                  }`}
-                >
-                  {link.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        )}
 
         {/* Controls */}
         <div className="flex items-center gap-4">
@@ -90,37 +63,8 @@ const Navbar = ({ terminalMode, setTerminalMode }: Props) => {
           >
             <Terminal size={20} />
           </button>
-
-          {!terminalMode && (
-            <div className="md:hidden text-2xl cursor-pointer">
-              {menuOpen ? (
-                <X size={24} onClick={() => setMenuOpen(false)} />
-              ) : (
-                <Menu size={24} onClick={() => setMenuOpen(true)} />
-              )}
-            </div>
-          )}
         </div>
       </div>
-
-      {/* Mobile Nav */}
-      {menuOpen && !terminalMode && (
-        <ul className="md:hidden bg-background px-4 pb-4 space-y-3 text-center transition-all duration-300">
-          {navLinks.map((link) => (
-            <li key={link.path}>
-              <Link
-                to={link.path}
-                onClick={() => setMenuOpen(false)}
-                className={`block py-2 text-lg ${
-                  location.pathname === link.path ? "text-primary" : ""
-                }`}
-              >
-                {link.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      )}
 
       {/* 🔁 Dark/Light Mode Fullscreen Transition */}
       {isTransitioning && (
