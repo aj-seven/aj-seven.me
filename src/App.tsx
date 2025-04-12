@@ -1,28 +1,18 @@
-import { useState } from "react";
-import { Route, Routes } from "react-router-dom";
+import React, { useState } from "react";
+import DiscMenu from "./components/DiscMenu";
 import Navbar from "./components/Navbar";
-import Home from "./pages/Home";
 import TerminalMode from "./terminal/TerminalMode";
-import React from "react";
 
-function App() {
+const App = () => {
+  const [activeSection, setActiveSection] = useState("");
   const [terminalMode, setTerminalMode] = useState(false);
 
   return (
-    <>
+    <div className="w-full text-foreground">
       <Navbar terminalMode={terminalMode} setTerminalMode={setTerminalMode} />
-
-      {terminalMode ? (
-        <TerminalMode />
-      ) : (
-        <div>
-          <Routes>
-            <Route path="/" element={<Home />} />
-          </Routes>
-        </div>
-      )}
-    </>
+      {!terminalMode ? !activeSection ? <DiscMenu /> : <></> : <TerminalMode />}
+    </div>
   );
-}
+};
 
 export default App;
