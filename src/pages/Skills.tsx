@@ -19,7 +19,7 @@ const Skills = () => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-4xl md:text-5xl font-bold mb-6"
+        className="text-4xl md:text-5xl font-bold mb-4 underline underline-offset-4 decoration-blue-500"
       >
         My Skills
       </motion.h2>
@@ -30,11 +30,10 @@ const Skills = () => {
         transition={{ delay: 0.1, duration: 0.6 }}
         className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-4"
       >
-        A snapshot of my core competencies and how confident I feel working with
-        each.
+        A list of my skills and how good I am at using them.
       </motion.p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 max-w-4xl mx-auto">
         {skills.map((skill, index) => (
           <motion.div
             key={skill.name}

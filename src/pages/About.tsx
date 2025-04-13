@@ -3,14 +3,20 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const facts = ["Passion for tech", "Learner", "Aspiring Full Stack Developer"];
+const facts = [
+  "Student",
+  "Passion for tech",
+  "Learner",
+  "Linux Enthusiast",
+  "Aspiring Full Stack Developer",
+];
 
 const timeline = [
-  { year: "2019", detail: "Started exploring electronics & tech" },
-  { year: "2020", detail: "Discovered coding & web development" },
-  { year: "2021", detail: "Built early MERN stack projects" },
-  { year: "2023", detail: "Learned React, Node.js & Tailwind" },
-  { year: "2025", detail: "Learning New things..." },
+  { year: "2019", detail: "Started exploring electronics & tech." },
+  { year: "2020", detail: "Discovered coding & web development." },
+  { year: "2021", detail: "Built a few small projects." },
+  { year: "2023", detail: "Learned more about web development." },
+  { year: "2025", detail: "Learning New things and Improving my skills..." },
 ];
 
 const About = () => {
@@ -24,9 +30,9 @@ const About = () => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-4xl md:text-5xl font-bold mb-4"
+        className="text-4xl md:text-5xl font-bold mb-4 underline underline-offset-4 decoration-blue-500"
       >
-        About Me
+        Who Am I
       </motion.h2>
 
       {/* Intro Paragraph */}
@@ -34,10 +40,19 @@ const About = () => {
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1, duration: 0.6 }}
-        className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-10"
+        className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8"
       >
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
-        sodales sit amet nunc ac tincidunt.
+        I'm Abdul Jaber, a student at{" "}
+        <a
+          href="https://www.sgiet.in/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary hover:underline"
+        >
+          SGIT - JNTUK
+        </a>
+        , a electronics and tech enthusiast. I'm currently learning web
+        development and looking forward to becoming a full stack developer.
       </motion.p>
 
       {/* Facts */}
@@ -45,13 +60,13 @@ const About = () => {
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.6 }}
-        className="flex flex-wrap justify-center gap-4 mb-16"
+        className="flex flex-wrap max-w-2xl mx-auto justify-center gap-4 mb-14"
       >
         {facts.map((fact, i) => (
           <motion.div
             key={i}
             whileHover={{ scale: 1.05 }}
-            className="px-5 py-3 rounded-lg bg-white/30 dark:bg-white/5 shadow-xs text-sm md:text-base font-medium border border-gray-400 dark:border-gray-600 text-foreground"
+            className="px-4 py-2 rounded-lg bg-white/30 dark:bg-white/5 shadow-xs text-sm md:text-base font-medium border border-gray-400 dark:border-gray-600 text-foreground"
           >
             {fact}
           </motion.div>
@@ -66,7 +81,7 @@ const About = () => {
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: i * 0.15, duration: 0.5 }}
-            className="flex items-start gap-4"
+            className="flex items-start"
           >
             <div className="min-w-[60px] text-primary font-semibold text-lg">
               {item.year}

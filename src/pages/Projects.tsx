@@ -42,10 +42,19 @@ const Projects = () => {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-4xl md:text-5xl font-bold mb-4"
+        className="text-4xl md:text-5xl font-bold mb-4 underline underline-offset-4 decoration-blue-500"
       >
         Projects
       </motion.h2>
+
+      <motion.p
+        initial={{ opacity: 0, y: 10 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.1, duration: 0.6 }}
+        className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-4"
+      >
+        A collection of projects, I&apos;ve worked on.
+      </motion.p>
 
       <div className="grid gap-3 md:grid-cols-2 max-w-5xl mx-auto">
         {projects.map((project, index) => (
