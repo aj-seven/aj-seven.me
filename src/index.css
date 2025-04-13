@@ -51,3 +51,7 @@
 html {
   scroll-behavior: smooth;
 }
+
+.glow-nav {
+  box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
+}
