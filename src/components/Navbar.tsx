@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { Sun, Moon, Terminal } from "lucide-react";
+import { Sun, Moon, Terminal, Code2 } from "lucide-react";
 import React from "react";
+import { TypeAnimation } from "react-type-animation";
 
 type Props = {
   terminalMode: boolean;
@@ -12,9 +13,34 @@ const Navbar = ({ terminalMode, setTerminalMode }: Props) => {
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [toggleFrom, setToggleFrom] = useState({ x: 0, y: 0 });
 
+  // Load theme & mode on mount
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    const storedMode = localStorage.getItem("ui-mode");
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
+
+    if (storedTheme === "dark" || (!storedTheme && prefersDark)) {
+      setDarkMode(true);
+      document.documentElement.classList.add("dark");
+    }
+
+    if (storedMode === "cli") {
+      setTerminalMode(true);
+    }
+  }, [setTerminalMode]);
+
+  // Save theme
   useEffect(() => {
     document.documentElement.classList.toggle("dark", darkMode);
+    localStorage.setItem("theme", darkMode ? "dark" : "light");
   }, [darkMode]);
+
+  // Save UI mode
+  useEffect(() => {
+    localStorage.setItem("ui-mode", terminalMode ? "cli" : "gui");
+  }, [terminalMode]);
 
   const handleThemeToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -26,11 +52,11 @@ const Navbar = ({ terminalMode, setTerminalMode }: Props) => {
 
     setTimeout(() => {
       setDarkMode((prev) => !prev);
-    }, 300); // Delay before theme changes
+    }, 300);
 
     setTimeout(() => {
       setIsTransitioning(false);
-    }, 300); // Duration of animation
+    }, 700);
   };
 
   const handleTerminalToggle = () => {
@@ -38,24 +64,58 @@ const Navbar = ({ terminalMode, setTerminalMode }: Props) => {
   };
 
   return (
-    <nav className="w-full bg-background/70 backdrop-blur-md text-foreground shadow-sm border-b border-gray-300 dark:border-gray-700 fixed top-0 left-0 z-50 transition duration-300">
+    <nav
+      className={`w-full fixed top-0 left-0 z-50 border-b shadow-sm transition duration-300 ${
+        terminalMode
+          ? "bg-black/80 text-green-400 border-green-800 glow-nav"
+          : "bg-background/70 backdrop-blur-md text-foreground border-gray-300 dark:border-gray-700"
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="text-xl font-bold text-primary transition-transform duration-300 hover:scale-105">
-          aj-seven
+        {/* Logo Section */}
+        <div
+          className={`flex items-center gap-3 text-xl md:text-2xl lg:text-3xl font-bold transition-all duration-300 group ${
+            terminalMode ? "text-green-400" : "text-primary"
+          }`}
+        >
+          {terminalMode ? (
+            <Terminal className="w-7 h-7 md:w-7 md:h-7 text-green-500 transition-transform duration-300 hover:scale-110" />
+          ) : (
+            <Code2 className="w-7 h-7 md:w-7 md:h-7 text-blue-500 dark:text-yellow-400 transition-transform duration-300 hover:scale-110" />
+          )}
+
+          <TypeAnimation
+            key={terminalMode ? "terminal" : "normal"} // Force re-render on mode switch
+            sequence={
+              terminalMode
+                ? ["$ whoami", 2000, "visitor@aj-seven", 2000]
+                : ["aj-seven", 2000, "Developer", 2000]
+            }
+            wrapper="span"
+            speed={50}
+            repeat={Infinity}
+            className={
+              terminalMode
+                ? "text-green-400"
+                : "text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-pink-500 dark:from-yellow-300 dark:to-orange-400"
+            }
+          />
         </div>
 
         {/* Controls */}
         <div className="flex items-center gap-4">
-          {/* Theme Toggle */}
-          <button
-            onClick={handleThemeToggle}
-            title="Toggle Theme"
-            className="transition-transform duration-300 relative z-10"
-          >
-            {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
+          {/* Theme Toggle - Hidden in Terminal Mode */}
+          {!terminalMode && (
+            <button
+              onClick={handleThemeToggle}
+              title="Toggle Theme"
+              className="transition-transform duration-300 relative z-10"
+            >
+              {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+            </button>
+          )}
 
-          {/* Terminal Mode Toggle */}
+          {/* Terminal Toggle */}
           <button
             onClick={handleTerminalToggle}
             title="Toggle Terminal Mode"
@@ -66,12 +126,12 @@ const Navbar = ({ terminalMode, setTerminalMode }: Props) => {
         </div>
       </div>
 
-      {/* 🔁 Dark/Light Mode Fullscreen Transition */}
+      {/* Theme switch reveal animation */}
       {isTransitioning && (
         <div
-          className="fixed top-0 left-0 w-full h-full z-[9999] pointer-events-none"
+          className="fixed inset-0 z-[9999] pointer-events-none flex items-center justify-center"
           style={{
-            backgroundColor: darkMode ? "#f5e0dc" : "#1e1e2e", // Opposite color
+            backgroundColor: darkMode ? "#f5e0dc" : "#1e1e2e",
             clipPath: `circle(0% at ${toggleFrom.x}px ${toggleFrom.y}px)`,
             animation: "reveal 0.7s ease-out forwards",
           }}
