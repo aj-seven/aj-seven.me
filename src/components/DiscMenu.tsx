@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import {
+  ChevronLeft,
+  ChevronRight,
+  HomeIcon,
+  Info,
+  FolderKanban,
+  ContactRound,
+  Target,
+} from "lucide-react";
 import About from "../pages/About";
 import Projects from "../pages/Projects";
 import Skills from "../pages/Skills";
@@ -15,6 +23,14 @@ const sections = {
   Projects: <Projects />,
   Skills: <Skills />,
   Contact: <Contact />,
+};
+
+const icons = {
+  Home: <HomeIcon />,
+  About: <Info />,
+  Projects: <FolderKanban />,
+  Skills: <Target />,
+  Contact: <ContactRound />,
 };
 
 const DiscMenu = () => {
@@ -40,6 +56,8 @@ const DiscMenu = () => {
   };
 
   const currentItem = items[currentIndex];
+
+  const currentIcons = icons[currentItem];
 
   return (
     <div className="w-screen h-dvh relative bg-gradient-to-br from-background via-muted to-background text-foreground overflow-hidden transition-colors duration-500">
@@ -101,11 +119,12 @@ const DiscMenu = () => {
             transition={{ duration: 0.1 }}
             className="pointer-events-auto mr-4 text-foreground hover:opacity-80 transition"
           >
-            <ChevronLeft size={28} />
+            <ChevronLeft size={40} />
           </motion.button>
-          <span className="text-lg font-semibold select-none">
-            {currentItem}
-          </span>
+          <div className="flex flex-col items-center font-semibold select-none">
+            {currentIcons}
+            <span className="text-sm"> {currentItem} </span>
+          </div>
           {/* Right Arrow */}
           <motion.button
             onClick={() => rotateTo("right")}
@@ -115,7 +134,7 @@ const DiscMenu = () => {
             transition={{ duration: 0.3 }}
             className="pointer-events-auto ml-4 text-foreground hover:opacity-80 transition"
           >
-            <ChevronRight size={28} />
+            <ChevronRight size={40} />
           </motion.button>
         </motion.div>
       </div>
