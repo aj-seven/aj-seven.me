@@ -1,151 +1,137 @@
-import React, { useState, useRef, useEffect } from "react";
+"use client";
+import React, { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
+import { commandData } from "./CommandData";
+import { isGlowCommand, isValidCommand } from "./data/commands";
+import { terminalThemes } from "./data/themes";
 
 type Line = {
-  text: string;
+  text?: string;
   type?: "info" | "error" | "success";
   animate?: boolean;
+  component?: React.ReactNode;
 };
 
 const TerminalMode = () => {
   const [history, setHistory] = useState<Line[]>([]);
   const [input, setInput] = useState("");
+  const [glow, setGlow] = useState(false);
   const [commandHistory, setCommandHistory] = useState<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState<number | null>(null);
-  const [glow, setGlow] = useState(false);
+  const terminalRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
-  const terminalRef = useRef<HTMLDivElement | null>(null);
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  const [theme, setTheme] = useState("blackboard");
+  const currentTheme = terminalThemes[theme];
 
-  const pushToHistory = (
-    text: string,
-    type: Line["type"] = "info",
-    animate = false
-  ) => {
-    setHistory((prev) => [...prev, { text, type, animate }]);
-  };
+  const pushLine = (line: Line) => setHistory((prev) => [...prev, line]);
 
   const handleCommand = (cmd: string) => {
-    pushToHistory(`$ ${cmd}`, "success");
+    const trimmed = cmd.trim();
 
-    switch (cmd.trim()) {
-      case "whoami":
-        pushToHistory(
-          "Hi! I'm Aj7, Aspiring full-stack developer.",
-          "info",
-          true
-        );
-        break;
-      case "projects":
-        pushToHistory(
-          `🛠️ Projects:\n- Portfolio\n- Snippet Manager\n- CLI Tools`,
-          "info",
-          true
-        );
-        break;
-      case "skills":
-        pushToHistory(
-          `🚀 Skills:\n- HTML, CSS, JS, TS\n- React, Next.js\n- Node.js, Express\n- MongoDB, PostgreSQL\n- Tailwind, shadcn/ui\n- Git, Vercel, Docker`,
-          "info",
-          true
-        );
-        break;
-      case "contact":
-        pushToHistory(
-          `📬 Contact:\n- Email: ajseven@outlook.in\n- GitHub: github.com/aj-seven\n- Twitter: @aj7_dev`,
-          "info",
-          true
-        );
-        break;
-      case "help":
-        pushToHistory(
-          `🧠 Available commands:\n- whoami\n- projects\n- skills\n- contact\n- glow on/off\n- clear\n- help`,
-          "info",
-          true
-        );
-        break;
-      case "clear":
-        setHistory([]);
-        setInput("");
+    pushLine({ text: `$ ${trimmed}`, type: "success" });
+
+    if (trimmed === "clear") {
+      setHistory([]);
+      setInput("");
+      return;
+    }
+    if (trimmed.startsWith("themes")) {
+      const args = trimmed.split(" ");
+      const command = args[1];
+      const targetTheme = args[2];
+      if (command === "list" || (command === "set" && targetTheme === "list")) {
+        pushLine({
+          component: (
+            <ul className="list-disc ml-4">
+              <strong> Available themes: </strong>
+              {Object.keys(terminalThemes).map((theme) => (
+                <li key={theme}>{theme}</li>
+              ))}
+            </ul>
+          ),
+          type: "info",
+        });
         return;
-      case "glow on":
-        setGlow(true);
-        pushToHistory(`✨ Glow enabled`, "info");
-        break;
-      case "glow off":
-        setGlow(false);
-        pushToHistory(`❌ Glow disabled`, "info");
-        break;
-      default:
-        pushToHistory(
-          `'${cmd}' is not recognized. Type 'help' to see commands.`,
-          "error",
-          true
-        );
+      }
+      if (targetTheme && terminalThemes.hasOwnProperty(targetTheme)) {
+        setTheme(targetTheme);
+        pushLine({ text: `Theme set to ${targetTheme}`, type: "success" });
+      } else {
+        pushLine({ text: "❌ Invalid theme name", type: "error" });
+        pushLine({
+          text: "Try 'themes list' for available themes",
+          type: "info",
+        });
+        pushLine({ text: "Example usage: themes set onedark", type: "info" });
+      }
+      return;
     }
 
-    // Store command for arrow navigation
-    if (cmd.trim()) {
-      setCommandHistory((prev) => [...prev, cmd]);
+    if (isGlowCommand(trimmed)) {
+      setGlow(trimmed === "glow on");
+      pushLine({
+        text: trimmed === "glow on" ? "✨ Glow enabled" : "❌ Glow disabled",
+      });
+      return;
     }
-    setHistoryIndex(null);
+
+    if (isValidCommand(trimmed)) {
+      const data = commandData[trimmed];
+      if (data) {
+        pushLine({ component: data, type: "info", animate: true });
+      }
+    } else {
+      pushLine({
+        text: `'${trimmed}' is not recognized. Type 'help' to see commands.`,
+        type: "error",
+        animate: true,
+      });
+    }
+
+    setCommandHistory((prev) => [...prev, trimmed]);
     setInput("");
+    setHistoryIndex(null);
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "ArrowUp") {
-      e.preventDefault();
-      if (commandHistory.length === 0) return;
-      setHistoryIndex((prev) => {
-        const newIndex =
-          prev === null ? commandHistory.length - 1 : Math.max(prev - 1, 0);
-        setInput(commandHistory[newIndex]);
-        return newIndex;
-      });
-    } else if (e.key === "ArrowDown") {
-      e.preventDefault();
-      if (commandHistory.length === 0) return;
-      setHistoryIndex((prev) => {
-        if (prev === null) return null;
-        const newIndex = Math.min(prev + 1, commandHistory.length - 1);
-        setInput(commandHistory[newIndex]);
-        return newIndex;
-      });
+  const didMountRef = useRef(false);
+  useEffect(() => {
+    if (!didMountRef.current) {
+      didMountRef.current = true;
+      // Auto-run `whoami` on mount
+      handleCommand("whoami");
     }
-  };
+  }, []);
 
   useEffect(() => {
-    terminalRef.current?.scrollTo({
-      top: terminalRef.current.scrollHeight,
-      behavior: "smooth",
-    });
+    if (terminalRef.current) {
+      const terminal = terminalRef.current;
+      // Scroll to bottom when new history is added.
+      terminal.scrollTo({
+        top: terminal.scrollHeight,
+        behavior: "smooth",
+      });
+    }
   }, [history]);
 
   return (
     <div
       className={clsx(
-        "relative min-h-dvh flex flex-col px-4 py-20 md:px-12 font-mono overflow-hidden",
-        glow
-          ? "bg-gradient-to-br from-[#0f0f0f] to-black via-[#001f1f] text-green-400"
-          : "bg-black text-green-400"
+        "relative min-h-dvh flex flex-col px-4 py-20 md:px-12 font-mono overflow-hidden transition-colors duration-500",
+        currentTheme.bg,
+        currentTheme.text
       )}
     >
-      {/* Background Glow */}
       {glow && (
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div className="absolute -inset-20 bg-green-400 opacity-10 blur-3xl rounded-full" />
         </div>
       )}
 
-      {/* Header */}
-      <div className="z-10 relative bg-[#0f0f0f] text-green-400 px-4 py-2 border-b border-green-800 text-sm font-semibold mb-4">
-        aj7@portfolio-terminal
-      </div>
-
-      {/* Output */}
       <div
         ref={terminalRef}
-        className="z-10 relative flex-1 overflow-y-auto whitespace-pre-wrap space-y-1 pr-1"
+        className="z-10 relative flex-1 overflow-y-auto whitespace-pre-wrap space-y-2 pr-1"
+        style={{ overflowY: "auto", scrollBehavior: "smooth" }}
       >
         {history.map((line, i) => (
           <div
@@ -158,25 +144,48 @@ const TerminalMode = () => {
             )}
           >
             {line.text}
+            {line.component}
           </div>
         ))}
-
-        {/* Input */}
         <form
           onSubmit={(e) => {
             e.preventDefault();
             handleCommand(input);
           }}
-          className="z-10 relative flex items-center mb-4"
+          className="flex items-center mb-4"
         >
-          <span className="pr-2 text-green-500">$</span>
+          <span className="pr-2 text-green-300">guest@terminal($)</span>
           <input
             ref={inputRef}
             type="text"
             className="w-full bg-transparent focus:outline-none caret-green-400"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            onKeyDown={handleKeyDown}
+            onKeyDown={(e) => {
+              if (e.key === "ArrowUp") {
+                e.preventDefault();
+                if (commandHistory.length) {
+                  setHistoryIndex((i) => {
+                    const newIndex =
+                      i === null
+                        ? commandHistory.length - 1
+                        : Math.max(i - 1, 0);
+                    setInput(commandHistory[newIndex]);
+                    return newIndex;
+                  });
+                }
+              } else if (e.key === "ArrowDown") {
+                e.preventDefault();
+                if (commandHistory.length) {
+                  setHistoryIndex((i) => {
+                    if (i === null) return null;
+                    const newIndex = Math.min(i + 1, commandHistory.length - 1);
+                    setInput(commandHistory[newIndex]);
+                    return newIndex;
+                  });
+                }
+              }
+            }}
             placeholder="Enter command..."
           />
         </form>
