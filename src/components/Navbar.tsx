@@ -74,7 +74,7 @@ const Navbar = ({ terminalMode, setTerminalMode }: Props) => {
       <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo Section */}
         <div
-          className={`flex items-center gap-3 text-xl md:text-2xl lg:text-3xl font-bold transition-all duration-300 group ${
+          className={`flex items-center gap-3 text-xl md:text-2xl font-bold transition-all duration-300 group ${
             terminalMode ? "text-green-400" : "text-primary"
           }`}
         >

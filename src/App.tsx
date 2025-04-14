@@ -2,14 +2,21 @@ import React, { useState } from "react";
 import DiscMenu from "./components/DiscMenu";
 import Navbar from "./components/Navbar";
 import TerminalMode from "./terminal/TerminalMode";
+import GlobalBackground from "./components/Background";
 
 const App = () => {
   const [activeSection, setActiveSection] = useState("");
   const [terminalMode, setTerminalMode] = useState(false);
 
   return (
-    <div className="w-full text-foreground">
+    <div className="w-full text-foreground relative">
+      {/* Background Pattern & Blobs */}
+      {!terminalMode && <GlobalBackground />}
+
+      {/* Navbar */}
       <Navbar terminalMode={terminalMode} setTerminalMode={setTerminalMode} />
+
+      {/* Main View Switch */}
       {!terminalMode ? !activeSection ? <DiscMenu /> : <></> : <TerminalMode />}
     </div>
   );

@@ -62,38 +62,7 @@ const DiscMenu = () => {
   return (
     <div className="w-screen h-dvh relative bg-gradient-to-br from-background via-muted to-background text-foreground overflow-hidden transition-colors duration-500">
       {/* Section Content */}
-      <div className="absolute inset-x-0 flex flex-col text-center z-10 rounded-t-lg bg-glass backdrop-blur-lg">
-        {/* Dot Pattern Background */}
-        <div className="absolute inset-0 z-0 h-dvh pointer-events-none opacity-20">
-          <svg
-            className="w-full h-full animate-moveDots"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <defs>
-              <pattern
-                id="dotPattern"
-                x="0"
-                y="0"
-                width="20"
-                height="20"
-                patternUnits="userSpaceOnUse"
-              >
-                <circle cx="1" cy="1" r="1" fill="currentColor" />
-              </pattern>
-            </defs>
-            <rect
-              width="100%"
-              height="100%"
-              fill="url(#dotPattern)"
-              className="text-gray-400 dark:text-gray-600"
-            />
-          </svg>
-        </div>
-
-        {/* Animated Gradient Blobs */}
-        <div className="absolute w-[500px] h-[500px] bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob z-0 top-[-100px] left-[-100px]" />
-        <div className="absolute w-[400px] h-[400px] bg-gradient-to-r from-cyan-400 to-blue-500 rounded-full mix-blend-multiply filter blur-2xl opacity-30 animate-blob animation-delay-2000 z-0 bottom-[-100px] right-[-100px]" />
-
+      <div className="absolute inset-x-0 flex flex-col text-center z-10 rounded-t-lg bg-glass ">
         {/* Section View */}
         <div className="py-20 max-h-dvh overflow-y-auto z-0">
           {sections[currentItem]}
