@@ -1,6 +1,4 @@
-import type { Config } from "tailwindcss";
-
-const config: Config = {
+const config = {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class", // important!
   theme: {
@@ -13,6 +11,7 @@ const config: Config = {
       animation: {
         blink: "blink 1s step-start infinite",
         typing: "typing 0.8s steps(40, end)",
+        moveDots: "moveDots 60s linear infinite",
       },
       keyframes: {
         blink: {
@@ -21,6 +20,10 @@ const config: Config = {
         typing: {
           from: { width: "0" },
           to: { width: "100%" },
+        },
+        moveDots: {
+          "0%": { transform: "translate(0, 0)" },
+          "100%": { transform: "translate(-20px, -20px)" },
         },
       },
     },
