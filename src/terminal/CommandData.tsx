@@ -218,18 +218,6 @@ export const commandData: Record<string, React.ReactNode> = {
       </ul>
     </>
   ),
-  source: (
-    <>
-      📝 Source Code:{" "}
-      <a
-        href="https://github.com/aj-seven/aj-seven.me"
-        target="_blank"
-        className="hover:underline text-blue-400"
-      >
-        Link
-      </a>
-    </>
-  ),
   help: (
     <>
       🧠 Available commands:
@@ -242,7 +230,6 @@ export const commandData: Record<string, React.ReactNode> = {
         <li>contact</li>
         <li>glow on/off</li>
         <li>gui on</li>
-        <li>source</li>
         <li>clear</li>
         <li>help</li>
       </ul>
