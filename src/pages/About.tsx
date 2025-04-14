@@ -42,7 +42,7 @@ const About = () => {
         transition={{ delay: 0.1, duration: 0.6 }}
         className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8"
       >
-        I'm Abdul Jaber, a student at{" "}
+        I'm Abdul Jaber based in India, a student at{" "}
         <a
           href="https://www.sgiet.in/"
           target="_blank"
@@ -74,6 +74,14 @@ const About = () => {
       </motion.div>
 
       {/* Timeline */}
+      <motion.h3
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        className="text-2xl md:text-3xl font-bold mb-4 underline underline-offset-4 decoration-blue-500"
+      >
+        Timeline
+      </motion.h3>
       <div className="max-w-2xl mx-auto text-left space-y-6">
         {timeline.map((item, i) => (
           <motion.div
