@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Sun, Moon, Terminal, Code2 } from "lucide-react";
+import { Sun, Moon, Terminal, Code2, Github } from "lucide-react";
 import React from "react";
 import { TypeAnimation } from "react-type-animation";
 
@@ -71,10 +71,10 @@ const Navbar = ({ terminalMode, setTerminalMode }: Props) => {
           : "bg-background/70 backdrop-blur-md text-foreground border-gray-300 dark:border-gray-700"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div className="max-w-7xl mx-auto px-3 py-2.5 flex items-center justify-between">
         {/* Logo Section */}
         <div
-          className={`flex items-center gap-3 text-xl md:text-2xl font-bold transition-all duration-300 group ${
+          className={`flex items-center gap-1 text-xl md:text-2xl font-bold transition-all duration-300 group ${
             terminalMode ? "text-green-400" : "text-primary"
           }`}
         >
@@ -103,8 +103,15 @@ const Navbar = ({ terminalMode, setTerminalMode }: Props) => {
         </div>
 
         {/* Controls */}
-        <div className="flex items-center gap-4">
+        <div className="flex p-2 border border-gray-400 dark:border-gray-600 rounded-full items-center gap-4">
           {/* Theme Toggle - Hidden in Terminal Mode */}
+          <a
+            href="https://github.com/aj-seven/aj-seven.me"
+            target="_blank"
+            title="Source Code"
+          >
+            <Github size={20} />
+          </a>
           {!terminalMode && (
             <button
               onClick={handleThemeToggle}
