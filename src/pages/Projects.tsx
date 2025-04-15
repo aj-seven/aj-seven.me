@@ -4,54 +4,20 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { ExternalLink, Github } from "lucide-react";
 import clsx from "clsx";
+import { projectData } from "../data/userData";
 
-const projects = [
-  {
-    name: "PostalMapper",
-    description:
-      "A digital address card generator based on postal code with QR support, export options. Built with React & Tailwind.",
-    tech: ["React", "TailwindCSS", "QRCode"],
-    live: "https://postal-mapper.vercel.app",
-    github: "https://github.com/aj-seven/postal-mapper",
-    category: "Web",
-  },
-  {
-    name: "Sketchify",
-    description: "Convert Images to sketches with Adjustable effects.",
-    tech: ["React", "TailwindCSS", "Canvas"],
-    live: "https://sketchify-app.vercel.app",
-    github: "https://github.com/aj-seven/sketchify",
-    category: "Web",
-  },
-  {
-    name: "Task Quest",
-    description: "A simple yet modern task tracker built for productivity.",
-    tech: ["React", "TailwindCSS"],
-    live: "https://task-quest.pages.dev",
-    github: "https://github.com/aj-seven/task-quest",
-    category: "Web",
-  },
-  {
-    name: "Android-Sysinfo",
-    description: "A tool that efficiently displays Android system details.",
-    tech: ["Linux", "Termux", "Android"],
-    github: "https://github.com/aj-seven/Android-Sysinfo",
-    category: "CLI",
-  },
-];
-
-const categories = Array.from(new Set(projects.map((p) => p.category)));
+const categories = Array.from(new Set(projectData.map((p) => p.category)));
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState("All");
 
   const filteredProjects =
     activeCategory === "All"
-      ? projects
-      : projects.filter((p) => p.category === activeCategory);
+      ? projectData
+      : projectData.filter((p) => p.category === activeCategory);
 
   return (
-    <section className="w-full px-4 backdrop-blur-sm rounded-2xl p-6 sm:p-8 text-center text-foreground">
+    <section className="w-full px-4 backdrop-blur-sm rounded-xl p-6 sm:p-8 text-center text-foreground">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -65,7 +31,7 @@ const Projects = () => {
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1, duration: 0.6 }}
-        className="text-lg md:text-xl text-left text-muted-foreground max-w-2xl mx-auto mb-6"
+        className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-6"
       >
         A collection of projects, I&apos;ve worked on.
       </motion.p>
