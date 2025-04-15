@@ -17,6 +17,15 @@ export const fetchData = [
   { label: "Memory", value: "15725MiB" },
 ];
 
+export const skills = [
+  { name: "React", level: 60 },
+  { name: "Node.js", level: 65 },
+  { name: "MongoDB", level: 45 },
+  { name: "Tailwind CSS", level: 75 },
+  { name: "TypeScript", level: 65 },
+  { name: "Git & GitHub", level: 80 },
+];
+
 export const projectData = [
   {
     name: "PostalMapper",

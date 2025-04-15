@@ -1,16 +1,6 @@
-"use client";
-
 import React from "react";
 import { motion } from "framer-motion";
-
-const skills = [
-  { name: "React", level: 60 },
-  { name: "Node.js", level: 65 },
-  { name: "MongoDB", level: 45 },
-  { name: "Tailwind CSS", level: 75 },
-  { name: "TypeScript", level: 65 },
-  { name: "Git & GitHub", level: 80 },
-];
+import { skills } from "../data/userData";
 
 const Skills = () => {
   return (
@@ -53,7 +43,7 @@ const Skills = () => {
                 initial={{ width: 0 }}
                 whileInView={{ width: `${skill.level}%` }}
                 transition={{ duration: 0.8 }}
-                className="h-full bg-primary rounded-full"
+                className="h-full bg-primary rounded-full bg-gradient-to-r from-cyan-400 to-blue-500"
               />
             </div>
           </motion.div>
