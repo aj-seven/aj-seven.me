@@ -8,6 +8,7 @@ import {
   FolderKanban,
   ContactRound,
   Target,
+  Feather,
 } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -16,9 +17,17 @@ import Projects from "../pages/Projects";
 import Skills from "../pages/Skills";
 import Contact from "../pages/Contact";
 import Home from "../pages/Home";
+import Neofetch from "../pages/Fetch";
 
-const items = ["Home", "About", "Projects", "Skills", "Contact"] as const;
-const paths = ["/", "/about", "/projects", "/skills", "/contact"];
+const items = [
+  "Home",
+  "About",
+  "Projects",
+  "Skills",
+  "Fetch",
+  "Contact",
+] as const;
+const paths = ["/", "/about", "/projects", "/skills", "/fetch", "/contact"];
 
 const sections = {
   Home: <Home />,
@@ -26,6 +35,7 @@ const sections = {
   Projects: <Projects />,
   Skills: <Skills />,
   Contact: <Contact />,
+  Fetch: <Neofetch />,
 };
 
 const icons = {
@@ -34,6 +44,7 @@ const icons = {
   Projects: <FolderKanban />,
   Skills: <Target />,
   Contact: <ContactRound />,
+  Fetch: <Feather />,
 };
 
 const DiscMenu = () => {
@@ -80,7 +91,7 @@ const DiscMenu = () => {
     <div className="w-screen h-dvh relative bg-gradient-to-br from-background via-muted to-background text-foreground overflow-hidden transition-colors duration-500">
       {/* Section Content */}
       <div className="absolute inset-x-0 flex flex-col text-center z-10 rounded-t-lg bg-glass">
-        <div className="py-20 max-h-dvh overflow-y-auto z-0">
+        <div className="py-10 max-h-dvh overflow-y-auto z-0">
           {sections[currentItem]}
         </div>
       </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import { ExternalLink, Github, Linkedin } from "lucide-react";
 import { Code2, GitBranch, Leaf, Server, BadgePercent } from "lucide-react";
+import { fetchData } from "../data/userData";
 
 const skills = [
   { name: "React", level: 60, icon: <Code2 className="text-[#61dafb]" /> },
@@ -208,6 +209,21 @@ export const commandData: Record<string, React.ReactNode> = {
       </ul>
     </>
   ),
+  fetch: (
+    <>
+      {fetchData.map((item, index) => (
+        <div
+          key={index}
+          className="flex justify-between items-center py-1 border-b last:border-none"
+        >
+          <span className="font-semibold text-sm sm:text-base">
+            {item.label}:
+          </span>
+          <span className="text-right text-green-500">{item.value}</span>
+        </div>
+      ))}
+    </>
+  ),
   contact: (
     <>
       📬 Contact:
@@ -228,6 +244,7 @@ export const commandData: Record<string, React.ReactNode> = {
         <li>projects</li>
         <li>skills</li>
         <li>contact</li>
+        <li>fetch</li>
         <li>glow on/off</li>
         <li>gui on</li>
         <li>clear</li>
