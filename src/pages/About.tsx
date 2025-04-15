@@ -23,7 +23,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="w-full px-4 backdrop-blur-sm rounded-2xl p-6 sm:p-8 text-center text-foreground"
+      className="w-full px-4 backdrop-blur-sm rounded-xl p-6 sm:p-8 text-center text-foreground"
     >
       {/* Section Heading */}
       <motion.h2
@@ -60,7 +60,7 @@ const About = () => {
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.6 }}
-        className="flex flex-wrap max-w-2xl mx-auto justify-left gap-4 mb-14"
+        className="flex flex-wrap max-w-2xl mx-auto justify-left gap-2 mb-8"
       >
         {facts.map((fact, i) => (
           <motion.div
