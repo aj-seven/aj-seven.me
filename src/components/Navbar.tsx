@@ -79,9 +79,13 @@ const Navbar = ({ terminalMode, setTerminalMode }: Props) => {
           }`}
         >
           {terminalMode ? (
-            <Terminal className="w-7 h-7 md:w-7 md:h-7 text-green-500 transition-transform duration-300 hover:scale-110" />
+            <a href="/">
+              <Terminal className="w-7 h-7 md:w-7 md:h-7 text-green-500 transition-transform duration-300 hover:scale-110" />
+            </a>
           ) : (
-            <Code2 className="w-7 h-7 md:w-7 md:h-7 text-blue-500 dark:text-yellow-400 transition-transform duration-300 hover:scale-110" />
+            <a href="/">
+              <Code2 className="w-7 h-7 md:w-7 md:h-7 text-blue-500 dark:text-yellow-400 transition-transform duration-300 hover:scale-110" />
+            </a>
           )}
 
           <TypeAnimation
