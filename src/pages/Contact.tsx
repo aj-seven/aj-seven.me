@@ -3,7 +3,9 @@ import React from "react";
 const Contact = () => {
   return (
     <>
-      <div>Coming Soon...</div>
+      <section className="w-full px-4 backdrop-blur-sm rounded-2xl p-6 sm:p-8 text-center text-foreground">
+        <div>Coming Soon...</div>
+      </section>
     </>
   );
 };

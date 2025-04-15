@@ -14,7 +14,7 @@ const skills = [
 
 const Skills = () => {
   return (
-    <section className="w-full px-6 mb-40 text-center text-foreground">
+    <section className="w-full px-4 backdrop-blur-sm rounded-2xl p-6 sm:p-8 text-center text-foreground">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

@@ -37,7 +37,7 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section className="w-full mb-40 px-6 text-center text-foreground">
+    <section className="w-full px-4 backdrop-blur-sm rounded-2xl p-6 sm:p-8 text-center text-foreground">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -51,7 +51,7 @@ const Projects = () => {
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1, duration: 0.6 }}
-        className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-4"
+        className="text-lg md:text-xl text-left text-muted-foreground max-w-2xl mx-auto mb-4"
       >
         A collection of projects, I&apos;ve worked on.
       </motion.p>

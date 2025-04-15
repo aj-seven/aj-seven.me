@@ -23,7 +23,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="w-full px-6 mb-40 text-center text-foreground"
+      className="w-full px-4 backdrop-blur-sm rounded-2xl p-6 sm:p-8 text-center text-foreground"
     >
       {/* Section Heading */}
       <motion.h2
@@ -40,7 +40,7 @@ const About = () => {
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1, duration: 0.6 }}
-        className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8"
+        className="text-lg md:text-xl text-left text-muted-foreground max-w-3xl mx-auto mb-8"
       >
         I'm Abdul Jaber based in India, a student at{" "}
         <a
@@ -60,7 +60,7 @@ const About = () => {
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.6 }}
-        className="flex flex-wrap max-w-2xl mx-auto justify-center gap-4 mb-14"
+        className="flex flex-wrap max-w-2xl mx-auto justify-left gap-4 mb-14"
       >
         {facts.map((fact, i) => (
           <motion.div
