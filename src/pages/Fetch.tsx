@@ -37,7 +37,7 @@ const Neofetch = () => {
         </div>
 
         {showFetch && (
-          <div className="grid sm:grid-cols-2 gap-2 backdrop-blur-md rounded-xl p-4 sm:p-8 border border-gray-400 dark:border-gray-600 font-mono text-sm sm:text-base">
+          <div className="flex flex-col gap-2 backdrop-blur-md rounded-xl p-4 sm:p-8 border border-gray-400 dark:border-gray-600 font-mono text-sm sm:text-base">
             {fetchData.map((item, index) => (
               <div
                 key={index}
