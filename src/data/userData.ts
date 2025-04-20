@@ -1,3 +1,5 @@
+import { Mail, MapPin, Github, Linkedin, Link2Icon } from "lucide-react";
+
 export const fetchData = [
   { label: "User", value: "aj7@garuda" },
   { label: "OS", value: "Garuda Linux Broadwing x86_64" },
@@ -40,6 +42,44 @@ export const timeline = [
   { year: "2021", detail: "Built a few small projects." },
   { year: "2023", detail: "Learned more about web development." },
   { year: "2025", detail: "Learning New things and Improving my skills..." },
+];
+
+export const contactItems = [
+  {
+    icon: Mail,
+    label: "Email",
+    value: "ajseven@outlook.in",
+    href: "mailto:ajseven@outlook.in",
+    color: "text-blue-500",
+  },
+  {
+    icon: MapPin,
+    label: "Location",
+    value: "India",
+    href: null,
+    color: "text-red-500",
+  },
+  {
+    icon: Github,
+    label: "GitHub",
+    value: "github.com/aj-seven",
+    href: "https://github.com/aj-seven",
+    color: "text-foreground",
+  },
+  {
+    icon: Linkedin,
+    label: "LinkedIn",
+    value: "linkedin.com/in/ajseven",
+    href: "https://www.linkedin.com/in/ajseven",
+    color: "text-blue-600",
+  },
+  {
+    icon: Link2Icon,
+    label: "Discord",
+    value: "Discord",
+    href: "https://discord.com/users/.ajseven",
+    color: "text-indigo-500",
+  },
 ];
 
 export const projectData = [

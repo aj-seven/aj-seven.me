@@ -1,7 +1,7 @@
 import React from "react";
 import { ExternalLink, Github, Linkedin } from "lucide-react";
 import { Code2, GitBranch, Leaf, Server, BadgePercent } from "lucide-react";
-import { fetchData } from "../data/userData";
+import { fetchData, contactItems } from "../data/userData";
 
 const skills = [
   { name: "React", level: 60, icon: <Code2 className="text-[#61dafb]" /> },
@@ -226,12 +226,20 @@ export const commandData: Record<string, React.ReactNode> = {
   ),
   contact: (
     <>
-      📬 Contact:
-      <ul className="ml-2">
-        <li>Email: ajseven@outlook.in</li>
-        <li>GitHub: github.com/aj-seven</li>
-        <li>Twitter: @aj7_dev</li>
-      </ul>
+      {contactItems.map(({ icon: Icon, label, value, href, color }, index) => (
+        <div key={index} className="flex items-center gap-2">
+          <Icon className={color} />
+          <span>
+            {href ? (
+              <a href={href} target="_blank" rel="noopener noreferrer">
+                {value}
+              </a>
+            ) : (
+              value
+            )}
+          </span>
+        </div>
+      ))}
     </>
   ),
   help: (
