@@ -113,7 +113,7 @@ export const projectData = [
     name: "Color Tailor",
     description: "A color palette generator built with React & Tailwind.",
     tech: ["React", "TailwindCSS", "chroma-js"],
-    live: "https://color-tailor.pages.dev",
+    live: "https://color-tailor.vercel.app",
     github: "https://github.com/aj-seven/color-tailor",
     category: "Web",
   },
