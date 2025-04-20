@@ -37,7 +37,7 @@ const Contact = () => {
                     rel="noopener noreferrer"
                     className="text-foreground hover:underline underline-offset-2 transition-all duration-200"
                   >
-                    {value}s
+                    {value}
                   </a>
                 ) : (
                   <span className="text-foreground">{value}</span>
