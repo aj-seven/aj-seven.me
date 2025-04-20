@@ -2,22 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-
-const facts = [
-  "Student",
-  "Passion for tech",
-  "Learner",
-  "Linux Enthusiast",
-  "Aspiring Full Stack Developer",
-];
-
-const timeline = [
-  { year: "2019", detail: "Started exploring electronics & tech." },
-  { year: "2020", detail: "Discovered coding & web development." },
-  { year: "2021", detail: "Built a few small projects." },
-  { year: "2023", detail: "Learned more about web development." },
-  { year: "2025", detail: "Learning New things and Improving my skills..." },
-];
+import { facts, timeline } from "../data/userData";
 
 const About = () => {
   return (

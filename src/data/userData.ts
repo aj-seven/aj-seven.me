@@ -26,6 +26,22 @@ export const skills = [
   { name: "Git & GitHub", level: 80 },
 ];
 
+export const facts = [
+  "Student",
+  "Passion for tech",
+  "Learner",
+  "Linux Enthusiast",
+  "Aspiring Full Stack Developer",
+];
+
+export const timeline = [
+  { year: "2019", detail: "Started exploring electronics & tech." },
+  { year: "2020", detail: "Discovered coding & web development." },
+  { year: "2021", detail: "Built a few small projects." },
+  { year: "2023", detail: "Learned more about web development." },
+  { year: "2025", detail: "Learning New things and Improving my skills..." },
+];
+
 export const projectData = [
   {
     name: "PostalMapper",
@@ -50,6 +66,14 @@ export const projectData = [
     tech: ["React", "TailwindCSS"],
     live: "https://task-quest.pages.dev",
     github: "https://github.com/aj-seven/task-quest",
+    category: "Web",
+  },
+  {
+    name: "Color Tailor",
+    description: "A color palette generator built with React & Tailwind.",
+    tech: ["React", "TailwindCSS", "chroma-js"],
+    live: "https://color-tailor.pages.dev",
+    github: "https://github.com/aj-seven/color-tailor",
     category: "Web",
   },
   {
