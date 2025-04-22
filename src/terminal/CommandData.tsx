@@ -55,7 +55,7 @@ export const commandData: Record<string, React.ReactNode> = {
       <div>
         I'm Abdul Jaber, a student at{" "}
         <a
-          href="https://www.sgiet.in/"
+          href="https://drsgiet.ac.in/"
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary font-bold hover:underline"

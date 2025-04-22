@@ -29,7 +29,7 @@ const About = () => {
       >
         I'm Abdul Jaber based in India, a student at{" "}
         <a
-          href="https://www.sgiet.in/"
+          href="https://drsgiet.ac.in/"
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary hover:underline"
