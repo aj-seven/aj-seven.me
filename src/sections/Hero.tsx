@@ -9,7 +9,7 @@ const Hero = () => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="relative w-full min-h-dvh flex flex-col py-44 items-center text-center overflow-hidden"
+      className="relative w-4xl h-max flex flex-col py-48 items-center text-center overflow-hidden"
     >
       {/* Hero Content */}
       <div className="z-10 max-w-2xl">
@@ -26,7 +26,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold mb-4 text-foreground"
+          className="text-4xl md:text-6xl font-bold mb-4 text-foreground"
         >
           Hey, I'm{" "}
           <span className="bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent">
@@ -37,7 +37,7 @@ const Hero = () => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.6 }}
-          className="text-lg md:text-xl text-muted-foreground font-medium mb-6"
+          className="text-lg md:text-2xl text-muted-foreground font-medium mb-6"
         >
           <TypeAnimation
             sequence={[
