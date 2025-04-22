@@ -2,23 +2,7 @@ import React from "react";
 import { ExternalLink, Github, Linkedin } from "lucide-react";
 import { Code2, GitBranch, Leaf, Server, BadgePercent } from "lucide-react";
 import { fetchData, contactItems } from "../data/userData";
-
-const skills = [
-  { name: "React", level: 60, icon: <Code2 className="text-[#61dafb]" /> },
-  { name: "Node.js", level: 65, icon: <Server className="text-[#3C873A]" /> },
-  { name: "MongoDB", level: 45, icon: <Leaf className="text-[#47A248]" /> },
-  {
-    name: "Tailwind CSS",
-    level: 75,
-    icon: <BadgePercent className="text-[#38BDF8]" />,
-  },
-  { name: "TypeScript", level: 65, icon: <Code2 className="text-[#3178C6]" /> },
-  {
-    name: "Git & GitHub",
-    level: 80,
-    icon: <GitBranch className="text-[#F05032]" />,
-  },
-];
+import { skills } from "../data/userData";
 
 export const commandData: Record<string, React.ReactNode> = {
   whoami: (
@@ -179,31 +163,11 @@ export const commandData: Record<string, React.ReactNode> = {
   skills: (
     <>
       🚀 <span className="font-semibold">Skills:</span>
-      <ul className="mt-2 space-y-3">
+      <ul className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-4 text-accent">
         {skills.map((skill, index) => (
-          <li key={index}>
-            <div className="flex items-center justify-between mb-1">
-              <span className="flex items-center gap-2 text-accent font-medium">
-                {skill.icon}
-                {skill.name}
-              </span>
-              <span className="text-sm text-muted">{skill.level}%</span>
-            </div>
-            <div className="w-full h-2 bg-muted/30 rounded">
-              <div
-                className="h-full rounded transition-all duration-500"
-                style={{
-                  width: `${skill.level}%`,
-                  backgroundColor: skill.icon.props.className?.match(
-                    /text-\[#(.+?)\]/
-                  )?.[1]
-                    ? `#${
-                        skill.icon.props.className.match(/text-\[#(.+?)\]/)[1]
-                      }`
-                    : "#888",
-                }}
-              />
-            </div>
+          <li key={index} className="flex items-center gap-2">
+            <skill.icon className="w-5 h-5 text-primary" />
+            <span className="font-medium">{skill.name}</span>
           </li>
         ))}
       </ul>

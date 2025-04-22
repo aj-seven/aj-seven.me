@@ -1,4 +1,12 @@
 import { Mail, MapPin, Github, Linkedin, Link2Icon } from "lucide-react";
+import {
+  Code,
+  Server,
+  Database,
+  Paintbrush,
+  Type,
+  GitBranch,
+} from "lucide-react";
 
 export const fetchData = [
   { label: "User", value: "aj7@garuda" },
@@ -7,13 +15,6 @@ export const fetchData = [
   { label: "Kernel", value: "6.14.2-zen1-1-zen" },
   { label: "Packages", value: "1519 (pacman)" },
   { label: "Shell", value: "zsh 5.9" },
-  { label: "Resolution", value: "1920x1080" },
-  { label: "DE", value: "Plasma 6.3.4" },
-  { label: "WM", value: "KWin" },
-  { label: "Theme", value: "adwaita-dark-amoled-master" },
-  { label: "Icons", value: "BeautyLine" },
-  { label: "Terminal", value: "konsole" },
-  { label: "Font", value: "Hack 14" },
   { label: "CPU", value: "i5-11400H (12) @ 4.50GHz" },
   { label: "GPU", value: "Intel UHD + RTX 2050" },
   { label: "Memory", value: "15725MiB" },
@@ -21,12 +22,12 @@ export const fetchData = [
 ];
 
 export const skills = [
-  { name: "React", level: 60 },
-  { name: "Node.js", level: 65 },
-  { name: "MongoDB", level: 45 },
-  { name: "Tailwind CSS", level: 75 },
-  { name: "TypeScript", level: 65 },
-  { name: "Git & GitHub", level: 80 },
+  { name: "React", icon: Code }, // React as general code
+  { name: "Node.js", icon: Server }, // Node as backend/server
+  { name: "MongoDB", icon: Database }, // MongoDB as database
+  { name: "Tailwind CSS", icon: Paintbrush }, // Tailwind as design/UI
+  { name: "TypeScript", icon: Type }, // TS as type-focused language
+  { name: "Git & GitHub", icon: GitBranch }, // Git
 ];
 
 export const facts = [
