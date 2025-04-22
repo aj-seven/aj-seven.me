@@ -1,8 +1,8 @@
 import React from "react";
 import { ExternalLink, Github, Linkedin } from "lucide-react";
-import { Code2, GitBranch, Leaf, Server, BadgePercent } from "lucide-react";
 import { fetchData, contactItems } from "../data/userData";
 import { skills } from "../data/userData";
+import { projectData } from "../data/userData";
 
 export const commandData: Record<string, React.ReactNode> = {
   whoami: (
@@ -69,95 +69,49 @@ export const commandData: Record<string, React.ReactNode> = {
   ),
   projects: (
     <>
-      🛠️ <span className="font-semibold">Projects:</span>
-      <ul className="list-disc ml-4 space-y-2 mt-2">
-        <li>
-          <span className="font-medium text-accent">PostalMapper</span>
-          <ul className="list-none ml-4 space-y-1">
-            <li className="flex items-center gap-1">
-              <ExternalLink />
-              <a
-                href="https://postal-mapper.vercel.app"
-                className="hover:underline text-blue-400"
-              >
-                Live Demo
-              </a>
-            </li>
-            <li className="flex items-center gap-1">
-              <Github />
-              <a
-                href="https://github.com/aj-seven/postal-mapper"
-                className="hover:underline text-blue-400"
-              >
-                GitHub Link
-              </a>
-            </li>
-          </ul>
-        </li>
+      <div className="grid gap-4 md:grid-cols-2 max-w-5xl mx-auto">
+        {projectData.map((project, index) => (
+          <div className="rounded-xl p-6 bg-white/30 dark:bg-white/5 shadow-xs border border-gray-400 dark:border-gray-600 text-left transition">
+            <h3 className="text-xl font-semibold mb-2">{project.name}</h3>
+            <p className="text-sm text-muted-foreground mb-4">
+              {project.description || "No description provided."}
+            </p>
+            <div className="flex flex-wrap gap-2 text-xs mb-4">
+              {project.tech.map((t) => (
+                <span
+                  key={t}
+                  className="bg-muted border border-gray-400 dark:border-gray-600 px-2 py-1 rounded-full text-foreground/80"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
 
-        <li>
-          <span className="font-medium text-accent">Sketchify</span>
-          <ul className="list-none ml-4 space-y-1">
-            <li className="flex items-center gap-1">
-              <ExternalLink />
-              <a
-                href="https://sketchify-app.vercel.app"
-                className="hover:underline text-blue-400"
-              >
-                Live Demo
-              </a>
-            </li>
-            <li className="flex items-center gap-1">
-              <Github />
-              <a
-                href="https://github.com/aj-seven/sketchify"
-                className="hover:underline text-blue-400"
-              >
-                GitHub Link
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <li>
-          <span className="font-medium text-accent">Task Quest</span>
-          <ul className="list-none ml-4 space-y-1">
-            <li className="flex items-center gap-1">
-              <ExternalLink />
-              <a
-                href="https://task-quest.pages.dev"
-                className="hover:underline text-blue-400"
-              >
-                Live Demo
-              </a>
-            </li>
-            <li className="flex items-center gap-1">
-              <Github />
-              <a
-                href="https://github.com/aj-seven/task-quest"
-                className="hover:underline text-blue-400"
-              >
-                GitHub Link
-              </a>
-            </li>
-          </ul>
-        </li>
-
-        <li>
-          <span className="font-medium text-accent">Android-Sysinfo</span>
-          <ul className="list-none ml-4 space-y-1">
-            <li className="flex items-center gap-1">
-              <Github />
-              <a
-                href="https://github.com/aj-seven/Android-Sysinfo"
-                className="hover:underline text-blue-400"
-              >
-                GitHub Link
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
+            <div className="flex gap-4 flex-wrap">
+              {project.github && (
+                <a
+                  href={project.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 text-sm text-muted-foreground hover:underline"
+                >
+                  <Github size={16} /> GitHub
+                </a>
+              )}
+              {project.live && (
+                <a
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 text-sm text-primary hover:underline"
+                >
+                  <ExternalLink size={16} /> Live Demo
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
     </>
   ),
   skills: (
