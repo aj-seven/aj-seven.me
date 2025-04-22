@@ -65,7 +65,7 @@ const Navbar = ({ terminalMode, setTerminalMode }: Props) => {
 
   return (
     <nav
-      className={`w-full fixed top-0 left-0 z-50 border-b shadow-sm transition duration-300 ${
+      className={`w-full fixed top-0 left-0 z-50 border-b border-gray-400 dark:border-gray-600 shadow-sm transition duration-300 ${
         terminalMode
           ? "bg-black/80 text-green-400 border-green-800 glow-nav"
           : "bg-background/70 backdrop-blur-md text-foreground border-gray-300 dark:border-gray-700"
