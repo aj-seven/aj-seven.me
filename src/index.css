@@ -70,3 +70,12 @@ html {
 ::-webkit-scrollbar {
   display: none;
 }
+
+/* Only apply hover effects at 768px and above (md breakpoint) */
+@media (hover: hover) and (pointer: fine) {
+  .hover-shadow-on-desktop:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: scale(1.02);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+}
