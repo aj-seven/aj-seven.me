@@ -55,3 +55,18 @@ html {
 .glow-nav {
   box-shadow: 0 0 20px rgba(0, 255, 0, 0.4);
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  /* IE/Edge */
+  scrollbar-width: none;
+  /* Firefox */
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
