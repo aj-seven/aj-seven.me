@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import DiscMenu from "./components/DiscMenu";
 import Navbar from "./components/Navbar";
 import TerminalMode from "./terminal/TerminalMode";
 import GlobalBackground from "./components/Background";
+import BottomNavBar from "./components/BottomNavBar";
 
 const App = () => {
   const [activeSection, setActiveSection] = useState("");
@@ -17,7 +17,15 @@ const App = () => {
       <Navbar terminalMode={terminalMode} setTerminalMode={setTerminalMode} />
 
       {/* Main View Switch */}
-      {!terminalMode ? !activeSection ? <DiscMenu /> : <></> : <TerminalMode />}
+      {!terminalMode ? (
+        !activeSection ? (
+          <BottomNavBar />
+        ) : (
+          <></>
+        )
+      ) : (
+        <TerminalMode />
+      )}
     </div>
   );
 };
