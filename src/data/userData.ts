@@ -86,6 +86,14 @@ export const contactItems = [
 
 export const projectData = [
   {
+    name: "IA-Website (DML)",
+    description: "Website for IA Clan in Dragon Mania Legends 🐉",
+    tech: ["NextJS", "Chakra-UI", "JavaScript", "Express-js", "MongoDB"],
+    live: "https://indianarmy-dml.netlify.app",
+    github: "",
+    category: "Web",
+  },
+  {
     name: "PostalMapper",
     description:
       "A digital address card generator based on postal code with QR support, export options. Built with React & Tailwind.",
