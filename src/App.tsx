@@ -9,7 +9,7 @@ const App = () => {
   const [terminalMode, setTerminalMode] = useState(false);
 
   return (
-    <div className="w-full text-foreground relative">
+    <div className="w-full max-h-fit overflow-hidden text-foreground relative">
       {/* Background Pattern & Blobs */}
       {!terminalMode && <GlobalBackground />}
 
