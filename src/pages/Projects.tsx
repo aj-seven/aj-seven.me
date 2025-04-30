@@ -2,9 +2,10 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { ExternalLink, Github } from "lucide-react";
+import { Github } from "lucide-react";
 import clsx from "clsx";
 import { projectData } from "../data/userData";
+import WebsiteDemoCard from "../components/WebsiteDemoCard";
 
 const categories = Array.from(new Set(projectData.map((p) => p.category)));
 
@@ -17,7 +18,7 @@ const Projects = () => {
       : projectData.filter((p) => p.category === activeCategory);
 
   return (
-    <section className="w-full px-4 backdrop-blur-sm rounded-xl p-6 sm:p-8 text-center text-foreground">
+    <section className="w-full px-4 backdrop-blur-sm rounded-xl p-4 sm:p-8 text-center text-foreground">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -93,15 +94,12 @@ const Projects = () => {
                   <Github size={16} /> GitHub
                 </a>
               )}
-              {project.live && (
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1 text-sm text-primary hover:underline"
-                >
-                  <ExternalLink size={16} /> Live Demo
-                </a>
+              {project.live ? (
+                <WebsiteDemoCard demoUrl={project.live} />
+              ) : (
+                <div className="text-center text-sm text-muted-foreground">
+                  No preview available
+                </div>
               )}
             </div>
           </motion.div>
