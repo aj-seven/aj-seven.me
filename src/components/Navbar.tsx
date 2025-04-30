@@ -10,8 +10,6 @@ type Props = {
 
 const Navbar = ({ terminalMode, setTerminalMode }: Props) => {
   const [darkMode, setDarkMode] = useState(false);
-  const [isTransitioning, setIsTransitioning] = useState(false);
-  const [toggleFrom, setToggleFrom] = useState({ x: 0, y: 0 });
 
   // Load theme & mode on mount
   useEffect(() => {
@@ -42,21 +40,8 @@ const Navbar = ({ terminalMode, setTerminalMode }: Props) => {
     localStorage.setItem("ui-mode", terminalMode ? "cli" : "gui");
   }, [terminalMode]);
 
-  const handleThemeToggle = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    setToggleFrom({
-      x: rect.left + rect.width / 2,
-      y: rect.top + rect.height / 2,
-    });
-    setIsTransitioning(true);
-
-    setTimeout(() => {
-      setDarkMode((prev) => !prev);
-    }, 300);
-
-    setTimeout(() => {
-      setIsTransitioning(false);
-    }, 700);
+  const handleThemeToggle = () => {
+    setDarkMode(!darkMode);
   };
 
   const handleTerminalToggle = () => {
@@ -136,18 +121,6 @@ const Navbar = ({ terminalMode, setTerminalMode }: Props) => {
           </button>
         </div>
       </div>
-
-      {/* Theme switch reveal animation */}
-      {isTransitioning && (
-        <div
-          className="fixed inset-0 z-[9999] pointer-events-none flex items-center justify-center"
-          style={{
-            backgroundColor: darkMode ? "#f5e0dc" : "#1e1e2e",
-            clipPath: `circle(0% at ${toggleFrom.x}px ${toggleFrom.y}px)`,
-            animation: "reveal 0.7s ease-out forwards",
-          }}
-        />
-      )}
     </nav>
   );
 };
