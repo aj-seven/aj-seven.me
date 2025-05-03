@@ -25,7 +25,7 @@ const About = () => {
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1, duration: 0.6 }}
-        className="text-lg md:text-xl text-left text-muted-foreground max-w-3xl mx-auto mb-8"
+        className="text-lg md:text-xl text-center text-muted-foreground max-w-3xl mx-auto mb-8"
       >
         I'm Abdul Jaber based in India, a student at{" "}
         <a
