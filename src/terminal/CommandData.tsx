@@ -60,7 +60,7 @@ export const commandData: Record<string, React.ReactNode> = {
           rel="noopener noreferrer"
           className="text-primary font-bold hover:underline"
         >
-          SGIT - JNTUK
+          Dr. SGIT
         </a>
         , a electronics and tech enthusiast. I'm currently learning web
         development and looking forward to becoming a full stack developer.
