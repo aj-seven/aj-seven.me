@@ -88,7 +88,7 @@ const BottomNavbar = () => {
   const CurrentComponent = sections[navItems[currentIndex].name];
 
   return (
-    <div className="w-screen h-dvh bg-gradient-to-br from-background via-muted to-background overflow-hidden">
+    <div className="w-screen h-dvh bg-background overflow-hidden">
       {/* Main Page Content */}
       <div className="absolute inset-x-0 flex flex-col text-center z-10 rounded-t-lg bg-glass">
         <div className="py-10 mb-12 max-h-dvh overflow-y-auto z-0">
@@ -97,7 +97,7 @@ const BottomNavbar = () => {
       </div>
 
       {/* Bottom Navbar with Drag/Scroll */}
-      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-gray-100 dark:bg-gray-800 border-t rounded-2xl border-gray-400 dark:border-gray-600">
+      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-background border-t rounded-t-2xl border-gray-400 dark:border-gray-600">
         <motion.div
           ref={scrollRef}
           drag="x"
