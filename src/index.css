@@ -3,18 +3,18 @@
 @tailwind utilities;
 
 :root {
-  --background: #f8fafc;
+  --background: #f9f9f9;
   /* light background */
-  --foreground: #1e293b;
+  --foreground: #101011;
   /* text color */
   --primary: #2563eb;
   /* accent */
 }
 
 .dark {
-  --background: #0f172a;
+  --background: #090909;
   /* dark background */
-  --foreground: #f1f5f9;
+  --foreground: #f1f1f1;
   /* light text */
   --primary: #3b82f6;
   /* accent in dark */
