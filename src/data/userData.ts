@@ -1,4 +1,3 @@
-import { Mail, MapPin, Github, Linkedin, Link2Icon } from "lucide-react";
 import {
   Code,
   Server,
@@ -6,6 +5,11 @@ import {
   Paintbrush,
   Type,
   GitBranch,
+  Mail,
+  MapPin,
+  Github,
+  Linkedin,
+  Link2Icon,
 } from "lucide-react";
 
 export const fetchData = [
@@ -28,6 +32,7 @@ export const skills = [
   { name: "Tailwind CSS", icon: Paintbrush }, // Tailwind as design/UI
   { name: "TypeScript", icon: Type }, // TS as type-focused language
   { name: "Git & GitHub", icon: GitBranch }, // Git
+  { name: "Next.js", icon: Link2Icon },
 ];
 
 export const facts = [

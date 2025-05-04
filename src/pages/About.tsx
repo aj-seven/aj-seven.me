@@ -32,9 +32,9 @@ const About = () => {
           href="https://drsgiet.ac.in/"
           target="_blank"
           rel="noopener noreferrer"
-          className="text-primary hover:underline"
+          className="text-primary font-bold hover:underline"
         >
-          SGIT - JNTUK
+          Dr. SGIT
         </a>
         , a electronics and tech enthusiast. I'm currently learning web
         development and looking forward to becoming a full stack developer.
