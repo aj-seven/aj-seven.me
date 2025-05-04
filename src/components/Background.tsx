@@ -6,7 +6,7 @@ const GlobalBackground = () => {
       {/* Dot Pattern */}
       <div className="absolute inset-0 h-full w-full opacity-20">
         <svg
-          className="w-full h-full animate-moveDots"
+          className="w-full h-full animate-slowPan"
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>

@@ -11,7 +11,6 @@ const config = {
       animation: {
         blink: "blink 1s step-start infinite",
         typing: "typing 0.8s steps(40, end)",
-        moveDots: "moveDots 60s linear infinite",
       },
       keyframes: {
         blink: {
@@ -20,10 +19,6 @@ const config = {
         typing: {
           from: { width: "0" },
           to: { width: "100%" },
-        },
-        moveDots: {
-          "0%": { transform: "translate(0, 0)" },
-          "100%": { transform: "translate(-20px, -20px)" },
         },
         wave: {
           "0%": { transform: "rotate(0.0deg)" },
@@ -35,9 +30,13 @@ const config = {
           "60%": { transform: "rotate(0.0deg)" },
           "100%": { transform: "rotate(0.0deg)" },
         },
+        pan: {
+          "0%": { transform: "translate(0, 0)" },
+          "100%": { transform: "translate(-50px, -50px)" },
+        },
       },
       animation: {
-        wave: "wave 2s infinite ease-in-out",
+        slowPan: "pan 14s linear infinite",
       },
     },
   },
