@@ -1,11 +1,10 @@
-import React, { Profiler } from "react";
+import React from "react";
 import {
   Github,
   Linkedin,
   Mail,
   MapPin,
   Link as LinkIcon,
-  Projector,
 } from "lucide-react";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
