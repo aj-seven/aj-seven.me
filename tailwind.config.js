@@ -32,11 +32,11 @@ const config = {
         },
         pan: {
           "0%": { transform: "translate(0, 0)" },
-          "100%": { transform: "translate(-50px, -50px)" },
+          "100%": { transform: "translate(-10px, -10px)" },
         },
       },
       animation: {
-        slowPan: "pan 14s linear infinite",
+        slowPan: "pan 4s linear infinite",
       },
     },
   },
