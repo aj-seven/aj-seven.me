@@ -33,6 +33,7 @@ export const skills = [
   { name: "TypeScript", icon: Type }, // TS as type-focused language
   { name: "Git & GitHub", icon: GitBranch }, // Git
   { name: "Next.js", icon: Link2Icon },
+  { name: "Python", icon: Link2Icon}
 ];
 
 export const facts = [
