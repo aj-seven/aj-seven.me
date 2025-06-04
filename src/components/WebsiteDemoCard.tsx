@@ -1,5 +1,3 @@
-import React from "react";
-
 const WebsiteDemoCard = ({ demoUrl }) => {
   const handleClick = () => {
     if (demoUrl) {
