@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 import {
@@ -15,14 +15,14 @@ import Projects from "../pages/Projects";
 import Skills from "../pages/Skills";
 import Contact from "../pages/Contact";
 import Home from "../pages/Home";
-import Neofetch from "../pages/Fetch";
+//import Neofetch from "../pages/Fetch";
 
 const sections = {
   Home: <Home />,
   About: <About />,
   Projects: <Projects />,
   Skills: <Skills />,
-  Fetch: <Neofetch />,
+  //Fetch: <Neofetch />,
   Contact: <Contact />,
 };
 
@@ -31,7 +31,7 @@ const navItems = [
   { name: "About", path: "/about", icon: Info },
   { name: "Projects", path: "/projects", icon: FolderKanban },
   { name: "Skills", path: "/skills", icon: Target },
-  { name: "Fetch", path: "/fetch", icon: Feather },
+  //{ name: "Fetch", path: "/fetch", icon: Feather },
   { name: "Contact", path: "/contact", icon: ContactRound },
 ];
 
