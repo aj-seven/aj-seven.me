@@ -127,21 +127,6 @@ export const commandData: Record<string, React.ReactNode> = {
       </ul>
     </>
   ),
-  fetch: (
-    <>
-      {fetchData.map((item, index) => (
-        <div
-          key={index}
-          className="flex justify-between items-center py-1 border-b last:border-none"
-        >
-          <span className="font-semibold text-sm sm:text-base">
-            {item.label}:
-          </span>
-          <span className="text-right text-green-500">{item.value}</span>
-        </div>
-      ))}
-    </>
-  ),
   contact: (
     <>
       {contactItems.map(({ icon: Icon, label, value, href, color }, index) => (
@@ -170,7 +155,6 @@ export const commandData: Record<string, React.ReactNode> = {
         <li>projects</li>
         <li>skills</li>
         <li>contact</li>
-        <li>fetch</li>
         <li>glow on/off</li>
         <li>gui on</li>
         <li>clear</li>
