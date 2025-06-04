@@ -92,11 +92,10 @@ export const contactItems = [
 
 export const projectData = [
   {
-    name: "IA-Website (DML)",
-    description: "Website for IA Clan in Dragon Mania Legends 🐉",
-    tech: ["NextJS", "Chakra-UI", "JavaScript", "Express-js", "MongoDB"],
-    live: "https://indianarmy-dml.netlify.app",
-    github: "",
+    name: "Done Today",
+    description: "Track what you achieve every day. One thing at a time.",
+    tech: ["NextJS", "React", "TypeScript", "TailwindCSS", "MongoDB"],
+    live: "https://done-today.xyz",
     category: "Web",
   },
   {
