@@ -1,6 +1,6 @@
 import React from "react";
 import { ExternalLink, Github, Linkedin } from "lucide-react";
-import { fetchData, contactItems } from "../data/userData";
+import { contactItems } from "../data/userData";
 import { skills } from "../data/userData";
 import { projectData } from "../data/userData";
 

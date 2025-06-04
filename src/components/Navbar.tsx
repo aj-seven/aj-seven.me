@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Sun, Moon, Terminal, Code2, Github } from "lucide-react";
-import React from "react";
 import { TypeAnimation } from "react-type-animation";
 
 type Props = {

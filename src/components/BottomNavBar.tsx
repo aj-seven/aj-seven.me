@@ -7,7 +7,7 @@ import {
   FolderKanban,
   ContactRound,
   Target,
-  Feather,
+  //Feather,
 } from "lucide-react";
 
 import About from "../pages/About";

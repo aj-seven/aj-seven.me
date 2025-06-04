@@ -1,11 +1,4 @@
-import React from "react";
-import {
-  Github,
-  Linkedin,
-  Mail,
-  MapPin,
-  Link as LinkIcon,
-} from "lucide-react";
+import { Github, Linkedin, Mail, MapPin, Link as LinkIcon } from "lucide-react";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
 
@@ -44,7 +37,7 @@ const Hero = () => {
         >
           <TypeAnimation
             sequence={[
-              "Full Stack Developer",
+              "Aspiring Full Stack Developer",
               2000,
               "Tech Explorer",
               2000,
