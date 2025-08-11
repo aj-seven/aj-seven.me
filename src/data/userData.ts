@@ -99,6 +99,14 @@ export const projectData = [
     category: "Web",
   },
   {
+    name: "Landing Page",
+    description: "Simple Landing Page.",
+    tech: ["NextJS", "React", "TypeScript", "TailwindCSS", "Shadcn", "Framer-motion"],
+    live: "https://landing-page-ajseven.vercel.app",
+    github: "https://github.com/aj-seven/landing-page",
+    category: "Web",
+  },
+  {
     name: "PostalMapper",
     description:
       "A digital address card generator based on postal code with QR support, export options. Built with React & Tailwind.",
