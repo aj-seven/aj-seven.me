@@ -75,7 +75,7 @@ const Hero = () => {
             <Github size={24} />
           </a>
           <a
-            href="https://linkedin.com"
+            href="https://linkedin.com/in/ajseven"
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-primary transition"
