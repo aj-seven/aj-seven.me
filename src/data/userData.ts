@@ -33,7 +33,7 @@ export const skills = [
   { name: "TypeScript", icon: Type }, // TS as type-focused language
   { name: "Git & GitHub", icon: GitBranch }, // Git
   { name: "Next.js", icon: Link2Icon },
-  { name: "Python", icon: Link2Icon}
+  { name: "Python", icon: Link2Icon },
 ];
 
 export const facts = [
@@ -92,6 +92,14 @@ export const contactItems = [
 
 export const projectData = [
   {
+    name: "AI-Hub",
+    description: "AI Hub - Multi-model assistant for content and chat.",
+    tech: ["NextJS", "React", "TypeScript", "TailwindCSS", "Shadcn", "Tauri"],
+    live: "https://ai-hubx.vercel.app/",
+    github: "https://github.com/aj-seven/ai-hub",
+    category: "Web",
+  },
+  {
     name: "Done Today",
     description: "Track what you achieve every day. One thing at a time.",
     tech: ["NextJS", "React", "TypeScript", "TailwindCSS", "MongoDB"],
@@ -101,7 +109,14 @@ export const projectData = [
   {
     name: "Landing Page",
     description: "Simple Landing Page.",
-    tech: ["NextJS", "React", "TypeScript", "TailwindCSS", "Shadcn", "Framer-motion"],
+    tech: [
+      "NextJS",
+      "React",
+      "TypeScript",
+      "TailwindCSS",
+      "Shadcn",
+      "Framer-motion",
+    ],
     live: "https://landing-page-ajseven.vercel.app",
     github: "https://github.com/aj-seven/landing-page",
     category: "Web",
