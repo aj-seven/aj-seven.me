@@ -1,10 +1,4 @@
 import {
-  Code,
-  Server,
-  Database,
-  Paintbrush,
-  Type,
-  GitBranch,
   Mail,
   MapPin,
   Github,
@@ -12,6 +6,7 @@ import {
   Link2Icon,
 } from "lucide-react";
 
+// removed react-icons
 export const fetchData = [
   { label: "User", value: "aj7@garuda" },
   { label: "OS", value: "Garuda Linux Broadwing x86_64" },
@@ -26,14 +21,43 @@ export const fetchData = [
 ];
 
 export const skills = [
-  { name: "React", icon: Code }, // React as general code
-  { name: "Node.js", icon: Server }, // Node as backend/server
-  { name: "MongoDB", icon: Database }, // MongoDB as database
-  { name: "Tailwind CSS", icon: Paintbrush }, // Tailwind as design/UI
-  { name: "TypeScript", icon: Type }, // TS as type-focused language
-  { name: "Git & GitHub", icon: GitBranch }, // Git
-  { name: "Next.js", icon: Link2Icon },
-  { name: "Python", icon: Link2Icon },
+  {
+    category: "Frontend",
+    items: [
+      { name: "React", icon: "https://cdn.simpleicons.org/react" },
+      { name: "Vite", icon: "https://cdn.simpleicons.org/vite" },
+      { name: "TailwindCSS", icon: "https://cdn.simpleicons.org/tailwindcss" },
+      { name: "Next.js", icon: "https://cdn.simpleicons.org/nextdotjs", invertDark: true },
+      { name: "Shadcn-UI", icon: "https://cdn.simpleicons.org/shadcnui", invertDark: true },
+      { name: "TypeScript", icon: "https://cdn.simpleicons.org/typescript" },
+    ],
+  },
+  {
+    category: "Mobile",
+    items: [
+      { name: "Flutter", icon: "https://cdn.simpleicons.org/flutter" },
+    ],
+  },
+  {
+    category: "Backend",
+    items: [
+      { name: "Node.js", icon: "https://cdn.simpleicons.org/nodedotjs" },
+      { name: "Express.js", icon: "https://cdn.simpleicons.org/express", invertDark: true },
+      { name: "MongoDB", icon: "https://cdn.simpleicons.org/mongodb" },
+      { name: "MySQL", icon: "https://cdn.simpleicons.org/mysql" },
+      { name: "PostgreSQL", icon: "https://cdn.simpleicons.org/postgresql" },
+    ],
+  },
+  {
+    category: "Tools",
+    items: [
+      { name: "Git", icon: "https://cdn.simpleicons.org/git" },
+      { name: "Python", icon: "https://cdn.simpleicons.org/python" },
+      { name: "Docker", icon: "https://cdn.simpleicons.org/docker" },
+      { name: "Prisma", icon: "https://cdn.simpleicons.org/prisma", invertDark: true },
+      { name: "Redux/Zustand", icon: "https://cdn.simpleicons.org/redux" },
+    ],
+  },
 ];
 
 export const facts = [
