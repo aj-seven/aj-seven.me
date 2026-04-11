@@ -30,7 +30,7 @@ const Neofetch = () => {
   }, []);
 
   return (
-    <section className="w-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-12 pb-24 min-h-screen text-foreground">
+    <section className="w-full flex flex-col items-center justify-center px-2 sm:px-6 lg:px-8 pt-12 pb-24 min-h-screen text-foreground">
       <div className="w-full max-w-5xl backdrop-blur-sm rounded-2xl text-center flex flex-col items-center">
         <div className="w-full max-w-3xl">
           <div className="text-lg sm:text-xl mb-6 text-center font-mono text-gray-800 dark:text-gray-200 animate-pulse">

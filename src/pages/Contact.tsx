@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 
 const Contact = () => {
   return (
-    <section className="w-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-12 pb-24 min-h-screen text-foreground">
+    <section className="w-full flex flex-col items-center justify-center px-2 sm:px-6 lg:px-8 pt-12 pb-24 min-h-screen text-foreground">
       <motion.div className="w-full max-w-5xl backdrop-blur-sm rounded-2xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
 

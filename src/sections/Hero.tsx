@@ -9,7 +9,7 @@ const Hero = () => {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="max-h-fit mt-48 w-full flex flex-col-reverse lg:flex-row items-center justify-center px-6 lg:px-2 gap-8 overflow-hidden"
+      className="max-h-fit mt-48 w-full flex flex-col-reverse lg:flex-row items-center justify-center px-2 lg:px-2 gap-8 overflow-hidden"
     >
       {/* Left Section */}
       <div className="text-center lg:text-left max-w-2xl space-y-4">
