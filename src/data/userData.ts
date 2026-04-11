@@ -63,15 +63,52 @@ export const facts = [
   "Passion for tech",
   "Learner",
   "Linux Enthusiast",
-  "Aspiring Full Stack Developer",
+  "Full Stack Developer",
 ];
 
 export const timeline = [
-  { year: "2019", detail: "Started exploring electronics & tech." },
-  { year: "2020", detail: "Discovered coding & web development." },
-  { year: "2021", detail: "Built a few small projects." },
-  { year: "2023", detail: "Learned more about web development." },
-  { year: "2025", detail: "Learning New things and Improving my skills..." },
+  {
+    year: "2019",
+    detail:
+      "Started exploring electronics through hands-on DIY projects, focusing on transistor-based circuits and core components.",
+    more:
+      "Built a strong foundation by understanding how circuits behave at a fundamental level and experimenting with practical implementations.",
+  },
+  {
+    year: "2020",
+    detail:
+      "Discovered programming and web development using Termux on mobile.",
+    more:
+      "Learned core programming concepts, scripting, and built small automation projects to understand real-world applications.",
+  },
+  {
+    year: "2021",
+    detail:
+      "Developed multiple CLI-based projects to strengthen problem-solving and coding skills.",
+    more:
+      "Focused on writing efficient logic, improving debugging ability, and gaining confidence in building functional tools.",
+  },
+  {
+    year: "2023",
+    detail:
+      "Advanced into modern web development by building full-stack projects.",
+    more:
+      "Worked with frontend and backend technologies, integrating APIs and developing scalable applications.",
+  },
+  {
+    year: "2025",
+    detail:
+      "Began exploring Artificial Intelligence and its practical applications.",
+    more:
+      "Studied AI models, experimented with integrations, and built projects to enhance automation and intelligent features.",
+  },
+  {
+    year: "2026",
+    detail:
+      "Focused on mastering advanced tools and preparing for professional opportunities.",
+    more:
+      "Actively building production-level projects and seeking roles in full-stack development and AI-driven systems.",
+  },
 ];
 
 export const contactItems = [
