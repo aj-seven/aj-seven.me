@@ -97,7 +97,7 @@ const BottomNavbar = () => {
       </div>
 
       {/* Bottom Navbar with Drag/Scroll */}
-      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-background border-t rounded-t-2xl border-gray-400 dark:border-gray-600">
+      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-background border-t rounded-t-2xl border-gray-300 dark:border-gray-800">
         <motion.div
           ref={scrollRef}
           drag="x"
@@ -121,11 +121,10 @@ const BottomNavbar = () => {
                   navigate(item.path);
                   scrollToActive(index);
                 }}
-                className={`flex-shrink-0 w-fit flex flex-col items-center justify-center px-4 py-1 rounded-xl transition-all duration-200 ${
-                  isActive
+                className={`flex-shrink-0 w-fit flex flex-col items-center justify-center px-4 py-1 rounded-xl transition-all duration-200 ${isActive
                     ? "text-primary scale-110 translate-y-[-10px] shadow-md bg-gray-300/10"
                     : "text-muted-foreground hover:bg-gray-300/10"
-                }`}
+                  }`}
                 style={{
                   zIndex: isActive ? 10 : "auto",
                 }}

@@ -32,10 +32,12 @@ const config = {
         },
         pan: {
           "0%": { transform: "translate(0, 0)" },
-          "100%": { transform: "translate(-10px, -10px)" },
+          "100%": { transform: "translate(-20px, -20px)" },
         },
       },
       animation: {
+        blink: "blink 1s step-start infinite",
+        typing: "typing 0.8s steps(40, end)",
         slowPan: "pan 4s linear infinite",
       },
     },

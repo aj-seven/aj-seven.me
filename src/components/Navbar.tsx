@@ -49,18 +49,16 @@ const Navbar = ({ terminalMode, setTerminalMode }: Props) => {
 
   return (
     <nav
-      className={`w-full fixed top-0 left-0 z-50 border-b border-gray-400 dark:border-gray-600 shadow-sm transition duration-300 ${
-        terminalMode
-          ? "bg-black/80 text-green-400 border-green-800 glow-nav"
-          : "bg-background/70 backdrop-blur-md text-foreground border-gray-300 dark:border-gray-700"
-      }`}
+      className={`w-full fixed top-0 left-0 z-50 border-b border-gray-300 dark:border-gray-800 shadow-sm transition duration-300 ${terminalMode
+        ? "bg-black/80 text-green-400 border-green-800 glow-nav"
+        : "bg-background/70 backdrop-blur-md text-foreground border-gray-300 dark:border-gray-700"
+        }`}
     >
       <div className="max-w-7xl mx-auto px-3 py-2.5 flex items-center justify-between">
         {/* Logo Section */}
         <div
-          className={`flex items-center gap-1 text-xl md:text-2xl font-bold transition-all duration-300 group ${
-            terminalMode ? "text-green-400" : "text-primary"
-          }`}
+          className={`flex items-center gap-1 text-xl md:text-2xl font-bold transition-all duration-300 group ${terminalMode ? "text-green-400" : "text-primary"
+            }`}
         >
           {terminalMode ? (
             <a href="/">

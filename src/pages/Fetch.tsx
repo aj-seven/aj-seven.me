@@ -30,29 +30,31 @@ const Neofetch = () => {
   }, []);
 
   return (
-    <div className="h-dvh w-full flex justify-center px-4 backdrop-blur-sm rounded-xl p-6 sm:p-8 text-center text-foreground">
-      <div className="w-full max-w-3xl">
-        <div className="text-lg sm:text-xl mb-4 text-center font-mono animate-pulse">
-          {loading ? `> neofetch${loadingDots[dots]}` : `> neofetch`}
-        </div>
-
-        {showFetch && (
-          <div className="flex flex-col gap-2 backdrop-blur-md rounded-xl p-4 sm:p-8 border border-gray-400 dark:border-gray-600 font-mono text-sm sm:text-base">
-            {fetchData.map((item, index) => (
-              <div
-                key={index}
-                className="flex justify-between items-center py-1 border-b border-gray-300 dark:border-gray-600 last:border-none"
-              >
-                <span className="font-semibold text-sm sm:text-base">
-                  {item.label}:
-                </span>
-                <span className="text-right text-green-500">{item.value}</span>
-              </div>
-            ))}
+    <section className="w-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-12 pb-24 min-h-screen text-foreground">
+      <div className="w-full max-w-5xl backdrop-blur-sm rounded-2xl text-center flex flex-col items-center">
+        <div className="w-full max-w-3xl">
+          <div className="text-lg sm:text-xl mb-6 text-center font-mono text-gray-800 dark:text-gray-200 animate-pulse">
+            {loading ? `> neofetch${loadingDots[dots]}` : `> neofetch`}
           </div>
-        )}
+
+          {showFetch && (
+            <div className="flex flex-col gap-3 backdrop-blur-md rounded-2xl p-6 sm:p-10 border border-gray-200 dark:border-gray-700/60 bg-white/10 dark:bg-black/10 font-mono text-sm sm:text-base shadow-lg transition-all duration-300 hover:shadow-xl">
+              {fetchData.map((item, index) => (
+                <div
+                  key={index}
+                  className="flex justify-between items-center py-2 border-b border-gray-200 dark:border-gray-700/60 last:border-none"
+                >
+                  <span className="font-semibold text-sm sm:text-base text-gray-900 dark:text-gray-100">
+                    {item.label}:
+                  </span>
+                  <span className="text-right text-green-600 dark:text-green-400 font-medium">{item.value}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

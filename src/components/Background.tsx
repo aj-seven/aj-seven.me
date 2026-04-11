@@ -2,9 +2,9 @@ const GlobalBackground = () => {
   return (
     <div className="fixed inset-0 z-10 overflow-hidden pointer-events-none">
       {/* Dot Pattern */}
-      <div className="absolute inset-0 h-full w-full opacity-20">
+      <div className="absolute inset-0 h-full w-full opacity-20 overflow-hidden">
         <svg
-          className="w-full h-full animate-slowPan"
+          className="absolute w-[calc(100%+40px)] h-[calc(100%+40px)] -top-[20px] -left-[20px] animate-slowPan"
           xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
@@ -16,7 +16,18 @@ const GlobalBackground = () => {
               height="20"
               patternUnits="userSpaceOnUse"
             >
-              <circle cx="2" cy="2" r="1.5" fill="currentColor" />
+              {/* Primary 5px star */}
+              <path
+                d="M2.5 0C2.5 1.2 3.8 2.5 5 2.5C3.8 2.5 2.5 3.8 2.5 5C2.5 3.8 1.2 2.5 0 2.5C1.2 2.5 2.5 1.2 2.5 0Z"
+                fill="currentColor"
+                opacity="0.8"
+              />
+              {/* Secondary faint 3px scatter star */}
+              <path
+                d="M12 10C12 10.8 12.8 11.5 13.5 11.5C12.8 11.5 12 12.2 12 13C12 12.2 11.2 11.5 10.5 11.5C11.2 11.5 12 10.8 12 10Z"
+                fill="currentColor"
+                opacity="0.4"
+              />
             </pattern>
           </defs>
           <rect
