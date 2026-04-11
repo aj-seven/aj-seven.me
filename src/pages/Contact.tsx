@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { contactItems } from "../data/userData";
+import { contactItems, resume } from "../data/userData";
 import { ArrowUpRight } from "lucide-react";
 
 const Contact = () => {
@@ -23,20 +23,30 @@ const Contact = () => {
               Got an idea, opportunity, or just want to connect? I’m always open to meaningful conversations.
             </p>
 
-            {/* PRIMARY CTA */}
-            <a
-              href="mailto:ajseven@outlook.in"
-              className="inline-block px-8 py-4 bg-blue-600 text-white rounded-xl font-semibold shadow-md hover:shadow-lg hover:bg-blue-700 hover:-translate-y-1 transition-all duration-300"
-            >
-              Send Email →
-            </a>
+            {/* CTA BUTTONS */}
+            <div className="flex flex-wrap gap-4">
+              <a
+                href="mailto:ajseven@outlook.in"
+                className="inline-block px-8 py-4 bg-blue-600 text-white rounded-xl font-semibold shadow-md hover:shadow-lg hover:bg-blue-700 hover:-translate-y-1 transition-all duration-300"
+              >
+                Send Email →
+              </a>
+              <a
+                href={resume["full-stack-developer"]}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-8 py-4 text-blue-600 border border-blue-500/40 dark:text-blue-400 rounded-xl font-semibold shadow-sm hover:shadow-md hover:bg-blue-600/20 dark:hover:bg-blue-500/20 hover:-translate-y-1 transition-all duration-300"
+              >
+                View Resume <ArrowUpRight size={20} />
+              </a>
+            </div>
           </motion.div>
 
           {/* RIGHT SIDE */}
           <div className="flex flex-col gap-4 w-full">
             {contactItems.map(({ icon: Icon, label, value, href, color }, i) => {
               const CardComponent = href ? motion.a : motion.div;
-              
+
               return (
                 <CardComponent
                   key={i}
@@ -60,7 +70,7 @@ const Contact = () => {
                       {value}
                     </p>
                   </div>
-                  
+
                   {href && (
                     <div className="pr-2 text-gray-400 group-hover:text-blue-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300">
                       <ArrowUpRight size={22} className="opacity-0 group-hover:opacity-100 transition-opacity" />

@@ -207,3 +207,7 @@ export const projectData = [
     category: "CLI",
   },
 ];
+
+export const resume = {
+  "full-stack-developer": "https://rxresu.me/aj-seven/full-stack-developer",
+};
