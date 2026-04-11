@@ -8,7 +8,6 @@ import { terminalThemes } from "./data/themes";
 type Line = {
   text?: string;
   type?: "info" | "error" | "success";
-  animate?: boolean;
   component?: React.ReactNode;
 };
 
@@ -16,8 +15,21 @@ const TerminalMode = () => {
   const [history, setHistory] = useState<Line[]>([]);
   const [input, setInput] = useState("");
   const [glow, setGlow] = useState(false);
-  const [commandHistory, setCommandHistory] = useState<string[]>([]);
+  const [commandHistory, setCommandHistory] = useState<string[]>(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("terminalHistory");
+      if (saved) {
+        try {
+          return JSON.parse(saved);
+        } catch (e) {
+          return [];
+        }
+      }
+    }
+    return [];
+  });
   const [historyIndex, setHistoryIndex] = useState<number | null>(null);
+  const [cursorPos, setCursorPos] = useState(0);
   const terminalRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -28,12 +40,24 @@ const TerminalMode = () => {
 
   const handleCommand = (cmd: string) => {
     const trimmed = cmd.trim();
+    if (!trimmed) return;
 
-    pushLine({ text: `$ ${trimmed}`, type: "success" });
+    pushLine({ text: `aj-seven@terminal:~$ ${trimmed}`, type: "success" });
+
+    // Ensure we clear input and save history before any specific command logic
+    setCommandHistory((prev) => {
+      const newHistory = [...prev, trimmed];
+      if (typeof window !== "undefined") {
+        localStorage.setItem("terminalHistory", JSON.stringify(newHistory));
+      }
+      return newHistory;
+    });
+    setInput("");
+    setHistoryIndex(null);
+    setCursorPos(0);
 
     if (trimmed === "clear") {
       setHistory([]);
-      setInput("");
       return;
     }
     if (trimmed.startsWith("themes")) {
@@ -79,19 +103,20 @@ const TerminalMode = () => {
     if (isValidCommand(trimmed)) {
       const data = commandData[trimmed];
       if (data) {
-        pushLine({ component: data, type: "info", animate: true });
+        pushLine({ component: data, type: "info" });
       }
     } else {
       pushLine({
         text: `'${trimmed}' is not recognized. Type 'help' to see commands.`,
         type: "error",
-        animate: true,
       });
     }
+  };
 
-    setCommandHistory((prev) => [...prev, trimmed]);
-    setInput("");
-    setHistoryIndex(null);
+  const updateCursor = () => {
+    if (inputRef.current) {
+      setCursorPos(inputRef.current.selectionStart || 0);
+    }
   };
 
   const didMountRef = useRef(false);
@@ -106,18 +131,38 @@ const TerminalMode = () => {
   useEffect(() => {
     if (terminalRef.current) {
       const terminal = terminalRef.current;
-      // Scroll to bottom when new history is added.
-      terminal.scrollTo({
-        top: terminal.scrollHeight,
-        behavior: "smooth",
-      });
+      // Scroll to bottom instantly like a real terminal
+      const scrollToBottom = () => {
+        terminal.scrollTo({
+          top: terminal.scrollHeight,
+          behavior: "auto",
+        });
+      };
+
+      scrollToBottom();
+      // Also scroll after a tiny delay in case images or layout shifts occur
+      setTimeout(scrollToBottom, 50);
     }
   }, [history]);
 
+  useEffect(() => {
+    if (terminalRef.current && input.length > 0) {
+      terminalRef.current.scrollTo({
+        top: terminalRef.current.scrollHeight,
+        behavior: "auto",
+      });
+    }
+  }, [input]);
+
+  const handleContainerClick = () => {
+    inputRef.current?.focus();
+  };
+
   return (
     <div
+      onClick={handleContainerClick}
       className={clsx(
-        "relative min-h-dvh flex flex-col px-4 py-20 md:px-12 font-mono overflow-hidden transition-colors duration-500",
+        "relative h-dvh flex flex-col px-2 py-20 md:py-20 md:px-12 font-mono overflow-hidden transition-colors duration-500",
         currentTheme.bg,
         currentTheme.text
       )}
@@ -131,7 +176,6 @@ const TerminalMode = () => {
       <div
         ref={terminalRef}
         className="z-10 relative flex-1 overflow-y-auto whitespace-pre-wrap space-y-2 pr-1"
-        style={{ overflowY: "auto", scrollBehavior: "smooth" }}
       >
         {history.map((line, i) => (
           <div
@@ -139,8 +183,7 @@ const TerminalMode = () => {
             className={clsx(
               line.type === "error" && "text-red-400",
               line.type === "success" && "text-green-500",
-              line.type === "info" && "text-green-400",
-              line.animate && "animate-typing"
+              line.type === "info" && "text-green-400"
             )}
           >
             {line.text}
@@ -154,40 +197,78 @@ const TerminalMode = () => {
           }}
           className="flex items-center mb-4"
         >
-          <span className="pr-2 text-green-300">guest@terminal($)</span>
-          <input
-            ref={inputRef}
-            type="text"
-            className="w-full bg-transparent focus:outline-none caret-green-400"
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => {
-              if (e.key === "ArrowUp") {
-                e.preventDefault();
-                if (commandHistory.length) {
-                  setHistoryIndex((i) => {
-                    const newIndex =
-                      i === null
-                        ? commandHistory.length - 1
-                        : Math.max(i - 1, 0);
-                    setInput(commandHistory[newIndex]);
-                    return newIndex;
-                  });
+          <span className="pr-2 text-green-300">aj-seven@terminal:~$</span>
+          <div className="relative flex-1 min-h-[1.5rem]">
+            {/* Visual block cursor and text */}
+            <div className="absolute inset-0 pointer-events-none flex items-center whitespace-pre">
+              <span>{input.slice(0, cursorPos)}</span>
+              <span className="bg-red-500 text-black animate-[pulse_1s_step-end_infinite] inline-block text-center shadow-sm" style={{ minWidth: "0.7em" }}>
+                {input.slice(cursorPos, cursorPos + 1) || " "}
+              </span>
+              <span>{input.slice(cursorPos + 1)}</span>
+            </div>
+
+            {/* Actual invisible input handling logic */}
+            <input
+              ref={inputRef}
+              type="text"
+              spellCheck={false}
+              autoComplete="off"
+              className="absolute inset-0 w-full bg-transparent text-transparent caret-transparent focus:outline-none"
+              value={input}
+              onChange={(e) => {
+                setInput(e.target.value);
+                setCursorPos(e.target.selectionStart || 0);
+              }}
+              onKeyUp={updateCursor}
+              onClick={updateCursor}
+              onKeyDown={(e) => {
+                if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+                  setTimeout(updateCursor, 0);
                 }
-              } else if (e.key === "ArrowDown") {
-                e.preventDefault();
-                if (commandHistory.length) {
-                  setHistoryIndex((i) => {
-                    if (i === null) return null;
-                    const newIndex = Math.min(i + 1, commandHistory.length - 1);
-                    setInput(commandHistory[newIndex]);
-                    return newIndex;
-                  });
+                if (e.key === "ArrowUp") {
+                  e.preventDefault();
+                  if (commandHistory.length) {
+                    setHistoryIndex((i) => {
+                      const newIndex =
+                        i === null
+                          ? commandHistory.length - 1
+                          : Math.max(i - 1, 0);
+                      setInput(commandHistory[newIndex]);
+                      setTimeout(() => {
+                        if (inputRef.current) {
+                          inputRef.current.selectionStart = commandHistory[newIndex].length;
+                          setCursorPos(commandHistory[newIndex].length);
+                        }
+                      }, 0);
+                      return newIndex;
+                    });
+                  }
+                } else if (e.key === "ArrowDown") {
+                  e.preventDefault();
+                  if (commandHistory.length) {
+                    setHistoryIndex((i) => {
+                      if (i === null) return null;
+                      if (i === commandHistory.length - 1) {
+                        setInput("");
+                        setCursorPos(0);
+                        return null;
+                      }
+                      const newIndex = Math.min(i + 1, commandHistory.length - 1);
+                      setInput(commandHistory[newIndex]);
+                      setTimeout(() => {
+                        if (inputRef.current) {
+                          inputRef.current.selectionStart = commandHistory[newIndex].length;
+                          setCursorPos(commandHistory[newIndex].length);
+                        }
+                      }, 0);
+                      return newIndex;
+                    });
+                  }
                 }
-              }
-            }}
-            placeholder="Enter command..."
-          />
+              }}
+            />
+          </div>
         </form>
       </div>
     </div>
