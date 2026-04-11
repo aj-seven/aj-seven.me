@@ -9,14 +9,14 @@ const Skills = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true, margin: "-100px" }}
-        className="w-full max-w-5xl backdrop-blur-sm rounded-2xl text-center"
+        className="w-full max-w-5xl backdrop-blur-sm rounded-2xl"
       >
         <div className="flex flex-col items-center mb-12 text-center">
           <motion.h2
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl font-bold mb-4 underline underline-offset-8 decoration-blue-500"
+            className="text-4xl md:text-5xl font-bold mb-4 underline underline-offset-4 decoration-blue-500"
           >
             My Skills
           </motion.h2>
@@ -37,7 +37,7 @@ const Skills = () => {
                 initial={{ opacity: 0, x: -15 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4 }}
-                className="text-2xl font-semibold text-primary pl-4 border-l-4 border-blue-500"
+                className="text-xl md:text-2xl font-medium text-left text-foreground pl-4 border-l-4 border-blue-500 underline decoration-blue-500 decoration-2 underline-offset-4"
               >
                 {categoryGroup.category}
               </motion.h3>

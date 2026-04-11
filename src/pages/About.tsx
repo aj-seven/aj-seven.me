@@ -22,7 +22,7 @@ const About = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-4xl md:text-5xl font-bold mb-4 underline underline-offset-8 decoration-blue-500"
+          className="text-4xl md:text-5xl font-bold mb-4 underline underline-offset-4 decoration-blue-500"
         >
           Who Am I
         </motion.h2>
@@ -69,7 +69,7 @@ const About = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-2xl md:text-3xl font-bold mb-2 underline underline-offset-8 decoration-blue-500"
+          className="text-2xl md:text-3xl font-bold mb-2 underline underline-offset-4 decoration-blue-500"
         >
           Timeline
         </motion.h3>
