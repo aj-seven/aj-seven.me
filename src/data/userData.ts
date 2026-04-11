@@ -4,6 +4,24 @@ import {
   Link2Icon,
 } from "lucide-react";
 
+export const personalInfo = {
+  name: "Abdul Jaber",
+  alias: "Aj7",
+  shortAlias: "AJ",
+  location: "Andhra Pradesh, India",
+  role: "Full Stack Developer",
+  roles: [
+    "Full Stack Developer",
+    "Tech Explorer",
+    "Linux Enthusiast",
+  ],
+  college: "Dr. SGIT",
+  collegeUrl: "https://drsgiet.ac.in/",
+  avatarUrl: "/assets/ME.jpg",
+  aboutText1: "I’m Abdul Jaber, based in Andhra Pradesh, India. I graduated in Electronics and Communication Engineering from ",
+  aboutText2: ". I design and build full-stack applications, with an increasing focus on Artificial Intelligence. My work focuses on building scalable systems, solving complex problems clearly, and delivering practical, real-world solutions.",
+};
+
 // removed react-icons
 export const fetchData = [
   { label: "User", value: "aj7@garuda" },

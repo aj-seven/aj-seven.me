@@ -1,6 +1,7 @@
 import { Github, Linkedin, Mail, MapPin, Link as LinkIcon } from "lucide-react";
 import { TypeAnimation } from "react-type-animation";
 import { motion } from "framer-motion";
+import { personalInfo, contactItems } from "../data/userData";
 
 const Hero = () => {
   return (
@@ -22,10 +23,10 @@ const Hero = () => {
           <span className="inline-block animate-wave origin-[70%_70%]">👋</span>
           , I'm{" "}
           <span className="bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-            Abdul Jaber
+            {personalInfo.name}
           </span>{" "}
           <span className="text-lg text-indigo-500 dark:text-indigo-300 align-super opacity-80">
-            [aka AJ]
+            [aka {personalInfo.shortAlias}]
           </span>
         </motion.h1>
 
@@ -37,11 +38,11 @@ const Hero = () => {
         >
           <TypeAnimation
             sequence={[
-              "Full Stack Developer",
+              personalInfo.roles[0],
               2000,
-              "Tech Explorer",
+              personalInfo.roles[1],
               2000,
-              "Linux Enthusiast",
+              personalInfo.roles[2],
               2000,
             ]}
             wrapper="span"
@@ -57,7 +58,7 @@ const Hero = () => {
           className="flex items-center justify-center lg:justify-start text-muted-foreground text-base md:text-lg"
         >
           <MapPin className="h-5 w-5 mr-2 text-primary" />
-          Based in Andhra Pradesh, India
+          Based in {personalInfo.location}
         </motion.div>
 
         <motion.div
@@ -67,7 +68,7 @@ const Hero = () => {
           className="flex justify-center lg:justify-start gap-5 pt-4"
         >
           <a
-            href="https://github.com/aj-seven"
+            href={contactItems.find(i => i.label === "GitHub")?.href}
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-primary transition"
@@ -75,7 +76,7 @@ const Hero = () => {
             <Github size={24} />
           </a>
           <a
-            href="https://linkedin.com/in/ajseven"
+            href={contactItems.find(i => i.label === "LinkedIn")?.href}
             target="_blank"
             rel="noopener noreferrer"
             className="text-muted-foreground hover:text-primary transition"
@@ -107,8 +108,8 @@ const Hero = () => {
         className="relative flex justify-center"
       >
         <img
-          src="/assets/ME.jpg"
-          alt="Abdul Jaber"
+          src={personalInfo.avatarUrl}
+          alt={personalInfo.name}
           className="relative z-10 h-48 md:h-64 rounded-full border-4 border-blue-500 shadow-sm object-fit "
         />
       </motion.div>

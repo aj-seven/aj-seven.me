@@ -1,8 +1,6 @@
 import React from "react";
 import { ExternalLink, Github, Linkedin } from "lucide-react";
-import { contactItems } from "../data/userData";
-import { skills } from "../data/userData";
-import { projectData } from "../data/userData";
+import { contactItems, skills, projectData, personalInfo } from "../data/userData";
 
 export const commandData: Record<string, React.ReactNode> = {
   whoami: (
@@ -17,20 +15,20 @@ export const commandData: Record<string, React.ReactNode> = {
     <div className="flex flex-col items-start gap-3">
       <div className="flex items-center gap-4">
         <img
-          src="/assets/ME.jpg"
-          alt="Aj7"
+          src={personalInfo.avatarUrl}
+          alt={personalInfo.alias}
           className="h-32 w-30 rounded-full border border-green-500"
         />
         <div>
-          <div className="text-lg font-bold">Hi! I'm Aj7</div>
+          <div className="text-lg font-bold">Hi! I'm {personalInfo.alias}</div>
           <div className="text-sm text-green-300">
-            Aspiring Full Stack Developer
+            {personalInfo.role}
           </div>
           <div className="text-sm flex flex-col gap-2 text-muted-foreground sm:flex-row sm:items-center sm:gap-4">
             <span className="font-semibold flex flex-row items-center gap-1">
               <Github size={20} />
               <a
-                href="https://github.com/aj-seven"
+                href={contactItems.find(i => i.label === "GitHub")?.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:underline text-primary font-bold"
@@ -41,29 +39,28 @@ export const commandData: Record<string, React.ReactNode> = {
             <span className="font-semibold flex flex-row items-center gap-1">
               <Linkedin size={20} />
               <a
-                href="https://www.linkedin.com/in/aj-seven/"
+                href={contactItems.find(i => i.label === "LinkedIn")?.href}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:underline text-primary font-bold"
               >
-                Abdul Jaber (Aj7)
+                {personalInfo.name} ({personalInfo.alias})
               </a>
             </span>
           </div>
         </div>{" "}
       </div>
       <div>
-        I'm Abdul Jaber, a student at{" "}
+        {personalInfo.aboutText1}
         <a
-          href="https://drsgiet.ac.in/"
+          href={personalInfo.collegeUrl}
           target="_blank"
           rel="noopener noreferrer"
           className="text-primary font-bold hover:underline"
         >
-          Dr. SGIT
+          {personalInfo.college}
         </a>
-        , a electronics and tech enthusiast. I'm currently learning web
-        development and looking forward to becoming a full stack developer.
+        {personalInfo.aboutText2}
       </div>
     </div>
   ),
@@ -71,7 +68,7 @@ export const commandData: Record<string, React.ReactNode> = {
     <>
       <div className="grid gap-4 md:grid-cols-2 max-w-5xl mx-auto">
         {projectData.map((project, index) => (
-          <div className="rounded-xl p-6 bg-white/30 dark:bg-white/5 shadow-xs border border-gray-400 dark:border-gray-600 text-left transition">
+          <div className="rounded-xl p-6 bg-white/20 dark:bg-black/30 shadow-xs border border-gray-300 dark:border-gray-800 text-left transition">
             <h3 className="text-xl font-semibold mb-2">{project.name}</h3>
             <p className="text-sm text-muted-foreground mb-4">
               {project.description || "No description provided."}
@@ -115,17 +112,31 @@ export const commandData: Record<string, React.ReactNode> = {
     </>
   ),
   skills: (
-    <>
-      🚀 <span className="font-semibold">Skills:</span>
-      <ul className="mt-4 grid grid-cols-2 sm:grid-cols-3 gap-4 text-accent">
-        {skills.map((skill, index) => (
-          <li key={index} className="flex items-center gap-2">
-            <skill.icon className="w-5 h-5 text-primary" />
-            <span className="font-medium">{skill.name}</span>
-          </li>
-        ))}
-      </ul>
-    </>
+    <div className="flex flex-col gap-4">
+      <div>
+        🚀 <span className="font-semibold">Skills:</span>
+      </div>
+      {skills.map((categoryGroup, index) => (
+        <div key={index} className="pl-2 border-l-2 border-gray-600">
+          <div className="text-primary font-bold mb-3">{categoryGroup.category}</div>
+          <ul className="grid grid-cols-2 sm:grid-cols-3 gap-3 text-accent">
+            {categoryGroup.items.map((item, idx) => (
+              <li key={idx} className="flex items-center gap-2">
+                <div className="p-1 rounded-md bg-white/20 dark:bg-black/30 flex items-center justify-center">
+                  <img
+                    src={item.icon}
+                    alt={item.name}
+                    className={`w-4 h-4 object-contain ${item.invertDark ? "dark:invert" : ""
+                      }`}
+                  />
+                </div>
+                <span className="font-medium">{item.name}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
   ),
   contact: (
     <>

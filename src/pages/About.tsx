@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { facts, timeline } from "../data/userData";
+import { facts, timeline, personalInfo } from "../data/userData";
 import { useState } from "react";
 
 const About = () => {
@@ -14,7 +14,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="w-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-12 pb-24 min-h-screen text-foreground"
+      className="w-full flex flex-col items-center justify-center px-2 sm:px-6 lg:px-8 pt-12 pb-24 min-h-screen text-foreground"
     >
       <motion.div className="w-full max-w-5xl backdrop-blur-sm rounded-2xl text-center">
         {/* Section Heading */}
@@ -34,16 +34,16 @@ const About = () => {
           transition={{ delay: 0.1, duration: 0.6 }}
           className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mb-6 leading-relaxed"
         >
-          I’m Abdul Jaber, based in Andhra Pradesh, India. I graduated in Electronics and Communication Engineering from{" "}
+          {personalInfo.aboutText1}
           <a
-            href="https://drsgiet.ac.in/"
+            href={personalInfo.collegeUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="text-primary font-semibold hover:underline"
           >
-            Dr. SGIT
+            {personalInfo.college}
           </a>
-          . I design and build full-stack applications, with an increasing focus on Artificial Intelligence. My work focuses on building scalable systems, solving complex problems clearly, and delivering practical, real-world solutions.
+          {personalInfo.aboutText2}
         </motion.p>
 
         {/* Facts */}
