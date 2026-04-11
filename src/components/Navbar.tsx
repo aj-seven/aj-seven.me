@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Sun, Moon, Terminal, Code2, Github } from "lucide-react";
+import { Sun, Moon, Terminal, Code2, Github, Star } from "lucide-react";
 import { TypeAnimation } from "react-type-animation";
 
 type Props = {
@@ -9,6 +9,19 @@ type Props = {
 
 const Navbar = ({ terminalMode, setTerminalMode }: Props) => {
   const [darkMode, setDarkMode] = useState(false);
+  const [stars, setStars] = useState<number | null>(null);
+
+  // Fetch GitHub Stars
+  useEffect(() => {
+    fetch("https://api.github.com/repos/aj-seven/aj-seven.me")
+      .then((res) => res.json())
+      .then((data) => {
+        if (typeof data.stargazers_count === "number") {
+          setStars(data.stargazers_count);
+        }
+      })
+      .catch((err) => console.error("Failed to fetch repo stars", err));
+  }, []);
 
   // Load theme & mode on mount
   useEffect(() => {
@@ -95,8 +108,15 @@ const Navbar = ({ terminalMode, setTerminalMode }: Props) => {
             href="https://github.com/aj-seven/aj-seven.me"
             target="_blank"
             title="Source Code"
+            className="flex items-center gap-1.5 hover:opacity-80 transition-opacity"
           >
             <Github size={20} />
+            {stars !== null && (
+              <span className="flex items-center text-sm font-semibold ml-1">
+                <Star size={16} className="text-yellow-400 fill-yellow-400 mr-1 animate-star drop-shadow-[0_0_6px_rgba(250,204,21,0.8)]" />
+                {stars}
+              </span>
+            )}
           </a>
           {!terminalMode && (
             <button

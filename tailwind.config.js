@@ -34,11 +34,16 @@ const config = {
           "0%": { transform: "translate(0, 0)" },
           "100%": { transform: "translate(-20px, -20px)" },
         },
+        star: {
+          "0%": { transform: "rotate(-12deg)" },
+          "50%": { transform: "rotate(12deg)" },
+        },
       },
       animation: {
         blink: "blink 1s step-start infinite",
         typing: "typing 0.8s steps(40, end)",
         slowPan: "pan 4s linear infinite",
+        starGlow: "starGlow 2.5s ease-in-out infinite",
       },
     },
   },
