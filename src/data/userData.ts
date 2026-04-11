@@ -1,6 +1,4 @@
 import {
-  Mail,
-  MapPin,
   Github,
   Linkedin,
   Link2Icon,
@@ -77,20 +75,6 @@ export const timeline = [
 ];
 
 export const contactItems = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "ajseven@outlook.in",
-    href: "mailto:ajseven@outlook.in",
-    color: "text-blue-500",
-  },
-  {
-    icon: MapPin,
-    label: "Location",
-    value: "India",
-    href: null,
-    color: "text-red-500",
-  },
   {
     icon: Github,
     label: "GitHub",
