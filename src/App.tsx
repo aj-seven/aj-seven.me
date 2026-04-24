@@ -24,7 +24,7 @@ const App = () => {
           <></>
         )
       ) : (
-        <TerminalMode />
+        <TerminalMode setTerminalMode={setTerminalMode} />
       )}
     </div>
   );

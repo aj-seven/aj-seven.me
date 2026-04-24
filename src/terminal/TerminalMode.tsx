@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import clsx from "clsx";
-import { commandData } from "./CommandData";
+import { getCommandData } from "./CommandData";
 import { isGlowCommand, isValidCommand } from "./data/commands";
 import { terminalThemes } from "./data/themes";
 
@@ -11,10 +11,15 @@ type Line = {
   component?: React.ReactNode;
 };
 
-const TerminalMode = () => {
+type Props = {
+  setTerminalMode: (v: boolean) => void;
+};
+
+const TerminalMode = ({ setTerminalMode }: Props) => {
   const [history, setHistory] = useState<Line[]>([]);
   const [input, setInput] = useState("");
   const [glow, setGlow] = useState(false);
+  const commandData = getCommandData(setTerminalMode);
   const [commandHistory, setCommandHistory] = useState<string[]>(() => {
     if (typeof window !== "undefined") {
       const saved = localStorage.getItem("terminalHistory");
@@ -58,6 +63,12 @@ const TerminalMode = () => {
 
     if (trimmed === "clear") {
       setHistory([]);
+      return;
+    }
+
+    if (trimmed === "gui" || trimmed === "gui on" || trimmed === "exit") {
+      pushLine({ text: "Switching to GUI mode...", type: "info" });
+      setTimeout(() => setTerminalMode(false), 500);
       return;
     }
     if (trimmed.startsWith("themes")) {

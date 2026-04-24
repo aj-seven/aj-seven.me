@@ -2,12 +2,12 @@ import React from "react";
 import { ExternalLink, Github, Linkedin } from "lucide-react";
 import { contactItems, skills, projectData, personalInfo } from "../data/userData";
 
-export const commandData: Record<string, React.ReactNode> = {
+export const getCommandData = (setTerminalMode: (v: boolean) => void): Record<string, React.ReactNode> => ({
   whoami: (
     <>
       <div>Welcome, Guest 👋</div>
       <span>
-        Try typing <strong>help</strong> to get list of commands...
+        Try typing <strong>help</strong> to get list of commands.
       </span>
     </>
   ),
@@ -68,7 +68,7 @@ export const commandData: Record<string, React.ReactNode> = {
     <>
       <div className="grid gap-4 md:grid-cols-2 max-w-5xl mx-auto">
         {projectData.map((project, index) => (
-          <div className="rounded-xl p-6 bg-white/20 dark:bg-black/30 shadow-xs border border-gray-300 dark:border-gray-800 text-left transition">
+          <div key={index} className="rounded-xl p-6 bg-white/20 dark:bg-black/30 shadow-xs border border-gray-300 dark:border-gray-800 text-left transition">
             <h3 className="text-xl font-semibold mb-2">{project.name}</h3>
             <p className="text-sm text-muted-foreground mb-4">
               {project.description || "No description provided."}
@@ -159,7 +159,7 @@ export const commandData: Record<string, React.ReactNode> = {
   help: (
     <>
       🧠 Available commands:
-      <ul className="list-disc ml-4">
+      <ul className="list-disc ml-4 font-bold">
         <li>whoami</li>
         <li>about</li>
         <li>themes</li>
@@ -167,10 +167,10 @@ export const commandData: Record<string, React.ReactNode> = {
         <li>skills</li>
         <li>contact</li>
         <li>glow on/off</li>
-        <li>gui on</li>
+        <li className="text-blue-500 cursor-pointer hover:underline" onClick={() => setTerminalMode(false)}>gui</li>
         <li>clear</li>
         <li>help</li>
       </ul>
     </>
   ),
-};
+});
