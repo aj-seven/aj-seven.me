@@ -3,6 +3,7 @@ import {
   Linkedin,
   Link2Icon,
 } from "lucide-react";
+import XIcon from "../components/XIcon";
 
 export const personalInfo = {
   name: "Abdul Jaber",
@@ -145,6 +146,13 @@ export const contactItems = [
     value: "linkedin.com/in/ajseven",
     href: "https://www.linkedin.com/in/ajseven",
     color: "text-blue-600",
+  },
+  {
+    icon: XIcon,
+    label: "X",
+    value: "x.com/its_ajseven",
+    href: "https://x.com/its_ajseven",
+    color: "text-foreground",
   },
   {
     icon: Link2Icon,

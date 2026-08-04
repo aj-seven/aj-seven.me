@@ -111,7 +111,7 @@ const Hero = ({ onTabChange, uiType }: HeroProps) => {
           <div className="flex items-center gap-6 sm:gap-5 pt-2 sm:pt-0">
             <div className="h-5 w-px bg-white/10 hidden sm:block" />
             {contactItems
-              .filter((i) => ["GitHub", "LinkedIn", "Discord"].includes(i.label))
+              .filter((i) => ["GitHub", "LinkedIn", "X", "Discord"].includes(i.label))
               .map((item, idx) => (
                 <a
                   key={idx}
