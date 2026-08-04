@@ -33,10 +33,10 @@ const Navbar = ({ terminalMode, setTerminalMode, uiType, setUiType }: Props) => 
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${terminalMode ? "py-0" : scrolled ? "py-3" : "py-4"
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${terminalMode ? "py-0" : scrolled ? "py-2" : "py-0"
         }`}
     >
-      <div className={`mx-auto transition-all duration-500 ${terminalMode ? "max-w-full px-0 mt-2" : "max-w-7xl px-2 sm:px-4 lg:px-6"
+      <div className={`mx-auto transition-all duration-500 ${terminalMode ? "max-w-full px-0 mt-2" : "max-w-6xl px-2 sm:px-4 lg:px-8"
         }`}>
         <div
           className={`relative flex items-center justify-between px-2 sm:px-4 transition-all duration-500 ${terminalMode
@@ -95,6 +95,7 @@ const Navbar = ({ terminalMode, setTerminalMode, uiType, setUiType }: Props) => 
             <a
               href="https://github.com/aj-seven/aj-seven.me"
               target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-2 px-3 py-1.5 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition-all group"
             >
               <Github size={22} className="text-zinc-400 group-hover:text-white transition-colors" />

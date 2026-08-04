@@ -4,20 +4,20 @@ import { ArrowUpRight } from "lucide-react";
 
 const Contact = () => {
   return (
-    <section id="contact" className="w-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-32 pb-48 min-h-screen text-foreground relative z-10 scroll-mt-32">
+    <section id="contact" className="w-full flex flex-col items-center px-4 sm:px-6 lg:px-8 pt-24 lg:pt-32 pb-8 min-h-screen text-foreground relative z-10 scroll-mt-32">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="w-full max-w-6xl"
+        className="w-full max-w-6xl flex-1 flex flex-col justify-center mb-20"
       >
         <div className="flex flex-col items-center mb-12 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-3xl md:text-5xl lg:text-6xl font-black mb-6 text-white tracking-tighter"
+            className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 text-white tracking-tighter"
           >
             Get In Touch
           </motion.h2>
@@ -39,7 +39,7 @@ const Contact = () => {
             transition={{ duration: 0.6 }}
             className="text-left space-y-4"
           >
-            <h3 className="text-3xl md:text-5xl font-black leading-tight text-white tracking-tighter">
+            <h3 className="text-4xl md:text-5xl font-black leading-tight text-white tracking-tighter">
               Let’s build <span className="text-blue-600 text-glow">better</span> products.
             </h3>
 
@@ -105,6 +105,8 @@ const Contact = () => {
             })}
           </div>
         </div>
+
+
       </motion.div>
     </section>
   );

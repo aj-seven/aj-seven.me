@@ -1,0 +1,20 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../sections/Hero';
+import About from '../sections/About';
+import Projects from '../sections/Projects';
+import Skills from '../sections/Skills';
+import Contact from '../sections/Contact';
+import BottomNavBar from '../components/BottomNavBar';
+---
+
+<Layout>
+  <main class="w-full">
+    <section id="home"><Hero client:only="react" /></section>
+    <section id="about"><About client:only="react" /></section>
+    <section id="projects"><Projects limit={4} client:only="react" /></section>
+    <section id="skills"><Skills client:only="react" /></section>
+    <section id="contact"><Contact client:only="react" /></section>
+    <BottomNavBar client:only="react" />
+  </main>
+</Layout>

@@ -1,0 +1,15 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Projects from '../sections/Projects';
+---
+
+<Layout title="Projects | Abdul Jaber">
+  <main class="w-full pt-24 min-h-screen">
+    <Projects client:only="react" />
+    <div class="flex justify-center pb-24">
+      <a href="/" class="px-8 py-4 rounded-full border border-white/10 text-zinc-400 font-bold hover:bg-white/5 hover:text-white transition-all">
+        ← Back to Home
+      </a>
+    </div>
+  </main>
+</Layout>

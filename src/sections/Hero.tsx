@@ -1,5 +1,5 @@
 "use client";
-import { Send } from "lucide-react";
+import { Send, BookOpen } from "lucide-react";
 import { motion } from "framer-motion";
 import { personalInfo, contactItems } from "../data/userData";
 
@@ -15,11 +15,14 @@ const Hero = ({ onTabChange, uiType }: HeroProps) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
-      className="min-h-[90vh] w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-center px-4 sm:px-6 lg:px-8 gap-12 lg:gap-16 relative z-10 pt-24 pb-20 scroll-mt-20"
+      className="min-h-[90vh] w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center justify-between px-4 sm:px-6 lg:px-8 gap-8 lg:gap-12 relative z-10 pt-24 lg:pt-32 pb-16 lg:pb-20 scroll-mt-20"
     >
-      {/* Background Branding */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0 opacity-70">
-        <span className="text-[18rem] md:text-[28rem] font-black text-white/[0.09] select-none tracking-[-0.07em]">
+      {/* Background Branding & Atmosphere */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0 flex items-center justify-center w-full h-full">
+        {/* Hero-specific Blue Glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vh] bg-blue-600/15 blur-[120px] rounded-full animate-pulse-slow" />
+        
+        <span className="relative z-10 text-[18rem] md:text-[28rem] font-black text-white/[0.09] select-none tracking-[-0.07em]">
           {personalInfo.shortAlias}
         </span>
       </div>
@@ -27,29 +30,43 @@ const Hero = ({ onTabChange, uiType }: HeroProps) => {
       {/* Left Content */}
       <div className="flex-1 text-left max-w-2xl space-y-4 relative z-10">
         <div className="space-y-4">
-          {/* Status */}
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-bold uppercase tracking-widest"
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-            </span>
-            {personalInfo.status}
-          </motion.div>
+          <div className="flex flex-wrap items-center gap-3">
+            {/* Status */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-widest"
+            >
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              </span>
+              {personalInfo.status}
+            </motion.div>
+
+            {/* Blog Link */}
+            <motion.a
+              href="/blog"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.15 }}
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-zinc-300 text-xs font-bold hover:bg-white/10 hover:text-white transition-all group"
+            >
+              <BookOpen size={14} className="text-zinc-400 group-hover:text-blue-400 transition-colors" />
+              Read my Writings <span className="group-hover:translate-x-0.5 transition-transform">→</span>
+            </motion.a>
+          </div>
 
           {/* Name & Role */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2, duration: 0.8, ease: "circOut" }}
-            className="text-4xl sm:text-6xl lg:text-8xl font-black leading-[0.9] tracking-tighter text-white"
+            className="text-4xl sm:text-5xl lg:text-7xl font-black leading-[0.9] tracking-tighter text-white"
           >
             <span className="block">{personalInfo.name}</span>
-            <span className="block text-zinc-500 text-3xl sm:text-5xl lg:text-7xl">
+            <span className="block text-zinc-500 text-3xl sm:text-4xl lg:text-6xl">
               {personalInfo.role}
             </span>
           </motion.h1>

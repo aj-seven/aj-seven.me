@@ -41,28 +41,26 @@ const About = () => {
         </div>
 
         {/* Intro */}
-        <div className="grid lg:grid-cols-5 gap-12 items-start mb-12">
-          <div className="lg:col-span-3">
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1, duration: 0.6 }}
-              className="text-base md:text-xl lg:text-2xl text-zinc-400 leading-relaxed font-medium"
+        <div className="flex flex-col gap-8 mb-16 max-w-4xl mx-auto text-center">
+          <motion.p
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1, duration: 0.6 }}
+            className="text-base md:text-xl lg:text-2xl text-zinc-400 leading-relaxed font-medium"
+          >
+            {personalInfo.aboutText1}
+            <a
+              href={personalInfo.collegeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-blue-500 underline decoration-blue-500/30 transition-colors"
             >
-              {personalInfo.aboutText1}
-              <a
-                href={personalInfo.collegeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-white hover:text-blue-500 underline decoration-blue-500/30 transition-colors"
-              >
-                {personalInfo.college}
-              </a>
-              {personalInfo.aboutText2}
-            </motion.p>
-          </div>
+              {personalInfo.college}
+            </a>
+            {personalInfo.aboutText2}
+          </motion.p>
 
-          <div className="lg:col-span-2 flex flex-wrap gap-2">
+          <div className="flex flex-wrap justify-center gap-2">
             {facts.map((fact, i) => (
               <motion.div
                 key={i}
@@ -78,7 +76,7 @@ const About = () => {
         </div>
 
         {/* Timeline Header */}
-        <div className="flex flex-col items-center mb-12 text-center">
+        <div className="flex flex-col items-center mt-12 mb-12 text-center">
           <h3 className="text-sm font-black text-blue-600 uppercase tracking-[0.3em]">
             Timeline
           </h3>

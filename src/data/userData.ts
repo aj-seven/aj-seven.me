@@ -80,10 +80,10 @@ export const skills = [
 ];
 
 export const facts = [
-  "Student",
-  "Passion for tech",
+  "Engineer",
+  "Tech Explorer",
   "Learner",
-  "Linux Enthusiast",
+  "Linux Favourite",
   "Full Stack Developer",
 ];
 

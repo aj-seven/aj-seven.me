@@ -18,7 +18,7 @@ const Projects = ({ limit }: { limit?: number }) => {
   const displayProjects = limit ? filteredProjects.slice(0, limit) : filteredProjects;
 
   return (
-    <section id="projects" className="w-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-32 pb-24 min-h-screen text-foreground relative z-10 scroll-mt-32">
+    <section id="projects" className="w-full flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-24 lg:pt-32 pb-16 lg:pb-24 min-h-screen text-foreground relative z-10 scroll-mt-32">
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -31,7 +31,7 @@ const Projects = ({ limit }: { limit?: number }) => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-3xl md:text-5xl lg:text-6xl font-black mb-6 text-white tracking-tighter"
+            className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 text-white tracking-tighter"
           >
             Featured Projects
           </motion.h2>
